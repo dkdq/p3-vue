@@ -10,9 +10,9 @@
       <router-link :to="{ name: 'profile', params: { username: 'mark2021' } }">
         Profile
       </router-link> |
-      <router-link :to="{ name: 'product.show', params: { id: 'product.id', slug: 'product.slug' } }">
+      <!-- <router-link :to="{ name: 'product', params: { id: 'product.id' } }">
         Product
-      </router-link>
+      </router-link> -->
 
       <div class="dropdown">
         <a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

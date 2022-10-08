@@ -9,11 +9,11 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProductView.vue')
   },
   {
-    path: '/about/:id',
-    name: 'about',
+    path: '/product/:id',
+    name: 'product',
     props: true,
     component: () => import(/* webpackChunkName: "product" */ '@/components/Product.vue')
   },
@@ -21,11 +21,6 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import(/* webpackChunkName: "profile" */ '../views/ProfileView.vue')
-  },
-  {
-    path: '/product/:id/:slug',
-    name: 'product.show',
-    component: () => import(/* webpackChunkName: "product" */ '../views/ProductView.vue')
   },
   {
     path: '*',

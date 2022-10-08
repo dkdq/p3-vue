@@ -1,17 +1,17 @@
 <template>
     <div class="dropdown-menu p-2">
-        <div>
+        <div v-for="item in cart" :key="item.product.id">
             <div class="px-2 d-flex justify-content-between">
                 <div>
-                    <strong>Product Title</strong>
-                    <br />1 X $23
+                    <strong>{{ item.product.brandModel }}</strong>
+                    <br />{{ item.quantity }} X ${{ item.product.price }}
                 </div>
                 <div>
                     <a href="#" class="badge bg-secondary">remove</a>
                 </div>
             </div>
-        </div>
         <hr />
+        </div>
         <div class="d-flex justify-content-between">
             <span>Total: $23</span>
             <a href="#">clear cart</a>
@@ -21,7 +21,11 @@
 
 <script>
 export default {
-
+    computed: {
+        cart() {
+            return this.$store.state.cart
+        }
+    }
 }
 </script>
 

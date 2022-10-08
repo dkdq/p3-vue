@@ -1,10 +1,6 @@
 <template>
     <div class="d-flex flex-wrap ">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard v-for="product in products" :key='product._id' :product='product' />
     </div>
 </template>
 
@@ -13,6 +9,14 @@ import ProductCard from '@/components/ProductCard.vue'
 export default {
     components: {
         ProductCard
+    },
+    computed: {
+        products() {
+            return this.$store.state.products.result
+        }
+    },
+    mounted() {
+        this.$store.dispatch('getProducts')
     }
 }
 </script>

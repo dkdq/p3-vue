@@ -4,13 +4,13 @@
             <img src="https://via.placeholder.com/150x100" class="w-100" alt="">
             <div class="card-body">
                 <h4 class="card-title">
-                    <router-link :to="{name: 'about', params: {id: 34} }">Product Title</router-link>
+                    <router-link :to="{name: 'product', params: {id: product._id} }">{{ product.brandModel }}</router-link>
                 </h4>
-                <strong>$23</strong>
-                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                <strong>${{ product.price }}</strong>
+                <p class="card-text">{{ product.type }}</p>
             </div>
             <div class="px-3 pb-3">
-                <button class="btn btn-secondary">Add to Cart</button>
+                <button class="btn btn-secondary" @click="addToCart()">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -18,7 +18,15 @@
 
 <script>
 export default {
-
+    props: ['product'],
+    methods: {
+        addToCart() {
+            this.$store.dispatch('addProductToCart', {
+                product: this.product,
+                quantity: 1
+            })
+        }
+    }
 }
 </script>
 
