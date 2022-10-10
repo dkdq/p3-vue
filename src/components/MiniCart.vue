@@ -13,7 +13,7 @@
         <hr />
         </div>
         <div class="d-flex justify-content-between">
-            <span>Total: $23</span>
+            <span>Total: ${{ cartTotalPrice }}</span>
             <a href="#">clear cart</a>
         </div>
     </div>
@@ -24,6 +24,9 @@ export default {
     computed: {
         cart() {
             return this.$store.state.cart
+        },
+        cartTotalPrice() {
+            return this.$store.getters.cartTotalPrice
         }
     }
 }

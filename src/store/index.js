@@ -11,6 +11,16 @@ export default new Vuex.Store({
     cart: []
   },
   getters: {
+    cartItemCount(state) {
+      return state.cart.length;
+    },
+    cartTotalPrice(state) {
+      let total = 0;
+      state.cart.forEach(item =>
+        total += item.product.price * item.quantity
+      )
+      return total;
+    }
   },
   mutations: {
     SET_PRODUCTS(state, products) {
@@ -20,17 +30,23 @@ export default new Vuex.Store({
       state.product = product
     },
     ADD_TO_CART(state, { product, quantity }) {
-      const productInCart = state.cart.find(item => {
-        return item.product.id === product.id;
-      })
-
-      if(productInCart) {
-        productInCart.quantity += quantity;
-      }
-
       state.cart.push({
-        product, quantity
+        product,
+        quantity
       })
+
+      let productInCart = state.cart.find(item => 
+        item.product.id === product.id
+        )
+      
+        if(productInCart) {
+          productInCart.quantity++;
+          return;
+        }
+        
+      console.log(productInCart);
+
+      
     }
   },
   actions: {

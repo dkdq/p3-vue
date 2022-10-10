@@ -16,7 +16,7 @@
 
       <div class="dropdown">
         <a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          0 Cart
+          {{ cartItemCount }} Cart
         </a>
         <div @click="$event.stopPropagation()">
           <MiniCart />
@@ -31,6 +31,11 @@ import MiniCart from '@/components/MiniCart.vue'
 export default {
   components: {
     MiniCart
+  },
+  computed: {
+    cartItemCount() {
+      return this.$store.getters.cartItemCount;
+    }
   }
 }
 </script>
