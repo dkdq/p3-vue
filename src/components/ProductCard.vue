@@ -1,7 +1,7 @@
 <template>
     <div class="col-3 m-2">
         <div class="card h-100 text-start">
-            <img src="https://via.placeholder.com/150x100" class="w-100" alt="">
+            <img :src="product.image" class="w-100" alt="">
             <div class="card-body">
                 <h4 class="card-title">
                     <router-link :to="{name: 'product', params: {id: product._id} }">{{ product.brandModel }}</router-link>

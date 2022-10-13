@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-wrap ">
+    <div class="d-flex flex-wrap">
         <ProductCard v-for="product in products" :key='product._id' :product='product' />
     </div>
 </template>
@@ -12,7 +12,7 @@ export default {
     },
     computed: {
         products() {
-            return this.$store.state.products.result
+            return this.$store.state.products
         }
     },
     mounted() {

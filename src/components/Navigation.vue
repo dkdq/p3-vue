@@ -28,6 +28,7 @@
 
 <script>
 import MiniCart from '@/components/MiniCart.vue'
+// import { mapGetters } from 'vuex'
 export default {
   components: {
     MiniCart
@@ -35,7 +36,8 @@ export default {
   computed: {
     cartItemCount() {
       return this.$store.getters.cartItemCount;
-    }
+    },
+    // ...mapGetters(['cartItemCount'])
   }
 }
 </script>
