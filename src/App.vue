@@ -4,15 +4,18 @@
     <div class="container">
       <router-view/>
     </div>
+    <NotificationList />
   </div>
 </template>
 
 <script>
 import Navigation from '@/components/Navigation.vue'
+import NotificationList from '@/components/NotificationList.vue'
 
 export default {
   components: {
-    Navigation
+    Navigation,
+    NotificationList
   }
 }
 </script>
