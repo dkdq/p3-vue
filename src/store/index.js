@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products: [],
+    products: {},
     product: null,
     cart: [],
     notifications: []
@@ -20,7 +20,7 @@ export default new Vuex.Store({
       state.cart.forEach(item =>
         total += item.product.price * item.quantity
       )
-      return total;
+      return total.toFixed(2);
     }
   },
   mutations: {
@@ -34,16 +34,16 @@ export default new Vuex.Store({
     ADD_TO_CART(state, { product, quantity }) {
       
       const productInCart = state.cart.find(item => item.product._id === product._id)
-      // console.log(productInCart)
       
       if(productInCart) {
-        productInCart.quantity++;
+        productInCart.quantity += quantity;
       } else {
         state.cart.push({
           product,
           quantity
         })
       }
+      console.log(productInCart)
     },
     REMOVE_PRODUCT_FROM_CART(state, product) {
       state.cart = state.cart.filter(item => item.product._id !== product._id)
@@ -77,8 +77,8 @@ export default new Vuex.Store({
             console.log(error)
         }
     },
-    getProduct({commit}, productId) {
-      axios.get(`https://tgc-earphone-review-rest-api.herokuapp.com/earphone/${productId}`)
+    async getProduct({commit}, productId) {
+      await axios.get(`https://tgc-earphone-review-rest-api.herokuapp.com/earphone/${productId}`)
       .then(response => {
         commit('SET_PRODUCT', response.data);
       })
@@ -86,7 +86,7 @@ export default new Vuex.Store({
     addProductToCart({commit, dispatch}, { product, quantity }) {
       commit('ADD_TO_CART', { product, quantity });
       dispatch('addNotification', {
-        type: 'success',
+        type: 'info',
         message: `${product.brandModel} added to cart.`
       });
     },

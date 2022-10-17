@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navigation />
+    <NavigationBar />
     <div class="container">
       <router-view/>
     </div>
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Navigation from '@/components/Navigation.vue'
+import NavigationBar from '@/components/NavigationBar.vue'
 import NotificationList from '@/components/NotificationList.vue'
 
 export default {
   components: {
-    Navigation,
+    NavigationBar,
     NotificationList
   }
 }
@@ -22,6 +22,15 @@ export default {
 
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+#app {
+  background-color: #F8F8F8 !important;
+  font-family: 'Exo 2', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -10,7 +10,7 @@
                 <p class="card-text">{{ product.type }}</p>
             </div>
             <div class="px-3 pb-3">
-                <button class="btn btn-secondary" @click="addToCart()">Add to Cart</button>
+                <button class="btn btn-secondary rounded-4" @click="addToCart()">Add to Cart</button>
             </div>
         </div>
     </div>

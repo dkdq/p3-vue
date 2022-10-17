@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown-menu p-2">
         <div v-for="item in cart" :key="item.product._id">
-            <div class="px-2 d-flex">
+            <div class="px-2 grid">
                 <div>
                     <img :src="item.product.image" class="cartImage" alt="">
                 </div>
@@ -63,8 +63,21 @@ a {
     width: 100%;
 }
 
-.d-flex > div {
+/* .d-flex > div {
     padding: 5px;
+    flex: 1 1 0;
+} */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr min-content;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid > div {
+    padding: 5px;
+    /* place-self: center; */
 }
 
 @media (min-width: 768px) {

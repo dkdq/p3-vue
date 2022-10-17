@@ -6,8 +6,8 @@
     <div class="col-8">
         <h1>{{ product.brandModel }}</h1>
         <h3>${{ product.price }}</h3>
-        <input type="text" class="text-center col-1 me-2 p-1" v-model.number="quantity">
-        <button class="btn btn-primary" @click="addToCart()">Add to Cart</button>
+        <input type="text" class="text-center col-1 me-2 p-1" @keyup.enter="addToCart()" v-model.number="quantity">
+        <button class="btn btn-secondary rounded-4" @click="addToCart()">Add to Cart</button>
         <p class="mt-4">{{ product.type }}</p>
     </div>
   </div>
