@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <!-- <div class="home">
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item">
@@ -19,6 +19,11 @@
         </div>
       </div>
     </div>
+  </div> -->
+  <div class="home">
+    <header class="container">
+    
+    </header>
   </div>
 </template>
 
@@ -29,7 +34,23 @@ export default {
 </script>
 
 <style scoped>
-.carousel-inner {
+/* .carousel-inner {
   height: 92vh;
+} */
+.container {
+  padding: 2rem;
+  background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));;
+  border-radius: 15px;
+  position: relative;
+  height: 500px;
+  line-height: 0.9;
+  width: 100%;
+}
+
+img {
+  position: absolute;
+  object-fit: cover;
+  width: 10rem;
+  height: 10rem;
 }
 </style>

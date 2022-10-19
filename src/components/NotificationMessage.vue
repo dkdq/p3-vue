@@ -35,10 +35,6 @@ export default {
 </script>
 
 <style>
-.alert {
-    /* background-color: whitesmoke !important; */
-}
-
 .fade-animation {
     animation: fade-in .5s ease, fade-out 5s ease;
     animation-fill-mode: forwards;

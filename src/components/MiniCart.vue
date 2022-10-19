@@ -10,13 +10,13 @@
                     <br /> ${{ item.product.price }} X {{ item.quantity }}
                 </div>
                 <div>
-                    <a href="#" class="badge bg-secondary" @click.prevent="removeProductFromCart(item.product)">remove</a>
+                    <a href="#" @click.prevent="removeProductFromCart(item.product)">remove</a>
                 </div>
             </div>
         <hr />
         </div>
         <div class="d-flex justify-content-between">
-            <button v-if="cart.length" class="btn btn-sm btn-block btn-success" >Checkout (${{ cartTotalPrice }})</button>
+            <button v-if="cart.length" class="btn btn-sm rounded-4">Checkout (${{ cartTotalPrice }})</button>
             <a :class="{disabled: cart.length === 0 }" href="#" @click.prevent="clearCartItems()">clear cart</a>
         </div>
     </div>
@@ -78,6 +78,11 @@ a {
 .grid > div {
     padding: 5px;
     /* place-self: center; */
+}
+
+.btn {
+    background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
+    color: whitesmoke;
 }
 
 @media (min-width: 768px) {

@@ -1,6 +1,6 @@
 <template>
-    <div class="col-3 m-2">
-        <div class="card h-100 text-start">
+    <div class="col-12 col-sm-3 m-2 shadow card-animation">
+        <div class="card h-100 text-start border-light">
             <img :src="product.image" class="w-100" alt="">
             <div class="card-body">
                 <h4 class="card-title">
@@ -30,6 +30,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+@media (min-width: 1024px) {
+    .card{
+        transform: scale(1);
+        transition: transform 0.5s ease;
+    }
 
+    .card:hover{
+        transform: scale(1.1)
+    }
+}
+
+.card-animation {
+    animation: fade-in 1s ease;
+}
 </style>
