@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import API from '@/api'
 
 Vue.use(Vuex)
 
@@ -9,7 +9,8 @@ export default new Vuex.Store({
     products: {},
     product: null,
     cart: [],
-    notifications: []
+    notifications: [],
+    error: ''
   },
   getters: {
     cartItemCount(state) {
@@ -29,7 +30,6 @@ export default new Vuex.Store({
     },
     SET_PRODUCT(state, product) {
       state.product = product
-      // console.log(state.product)
     },
     ADD_TO_CART(state, { product, quantity }) {
       
@@ -62,23 +62,26 @@ export default new Vuex.Store({
           return notification.id != notificationToRemove.id;
       })
     },
+    SET_ERROR(state, payload) {
+      state.error = payload;
+    },
   },
   actions: {
     async getProducts({commit}) {
-      // await axios.get('https://tgc-earphone-review-rest-api.herokuapp.com/earphone')
+      // await axios.get(URL + 'earphone')
       // .then(response => {
       //   commit('SET_PRODUCTS', response.data.result);
       // })
       try {
-        const response = await axios.get('https://tgc-earphone-review-rest-api.herokuapp.com/earphone')
-        commit('SET_PRODUCTS', response.data.result)
-        }
-        catch (error) {
-            console.log(error)
-        }
+        let response = await API().get('earphones')
+        commit('SET_PRODUCTS', response.data.result);
+      } catch (error) {
+        console.log(error.response.data || error.message)
+        commit('SET_ERROR', error.response.data || error.message)
+      }
     },
     async getProduct({commit}, productId) {
-      await axios.get(`https://tgc-earphone-review-rest-api.herokuapp.com/earphone/${productId}`)
+      await API().get(`earphone/${productId}`)
       .then(response => {
         commit('SET_PRODUCT', response.data);
       })
@@ -86,7 +89,7 @@ export default new Vuex.Store({
     addProductToCart({commit, dispatch}, { product, quantity }) {
       commit('ADD_TO_CART', { product, quantity });
       dispatch('addNotification', {
-        type: 'info',
+        type: 'success',
         message: `${product.brandModel} added to cart.`
       });
     },

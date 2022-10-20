@@ -16,7 +16,7 @@
         <hr />
         </div>
         <div class="d-flex justify-content-between">
-            <button v-if="cart.length" class="btn btn-sm rounded-4">Checkout (${{ cartTotalPrice }})</button>
+            <button v-if="cart.length" class="btn rounded-4">Checkout (${{ cartTotalPrice }})</button>
             <a :class="{disabled: cart.length === 0 }" href="#" @click.prevent="clearCartItems()">clear cart</a>
         </div>
     </div>

@@ -1,22 +1,23 @@
 <template>
   <div id="app">
     <NavigationBar />
-    <div class="container">
-      <router-view/>
-    </div>
+    <router-view/>
     <NotificationList />
+    <ErrorMessage />
   </div>
 </template>
 
 <script>
 import NavigationBar from '@/components/NavigationBar.vue'
 import NotificationList from '@/components/NotificationList.vue'
+import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export default {
   components: {
     NavigationBar,
-    NotificationList
-  }
+    NotificationList,
+    ErrorMessage
+  },
 }
 </script>
 

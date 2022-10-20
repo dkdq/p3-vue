@@ -1,56 +1,51 @@
 <template>
-  <!-- <div class="home">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item">
-          <img src="@/assets/woman-earphones-listening-music-gym.jpg" class="d-block w-100" alt="">
-        </div>
-        <div class="carousel-item">
-          <img src="@/assets/attractive-stylish-woman-listening-music-wireless-earphones-holding-smartphone.jpg" class="d-block w-100" alt="">
-        </div>
-        <div class="carousel-item">
-          <img src="@/assets/portrait-stylish-man-flannel-suit-glasses-listening-music-with-phone-headphones-sitting-window-sill-room-with-loft-interior.jpg" class="d-block w-100" alt="">
-        </div>
-        <div class="carousel-item active" data-bs-interval="5000">
-          <img src="@/assets/close-up-portrait-long-haired-brunette-girl-stylish-denim-jacket-going-birthday-party-attractive-young-woman-posing-with-bright-balloons-while-listening-music-headphones-with-closed-eyes.jpg" class="d-block w-100" alt="">
-        </div>
-        <div class="carousel-item">
-          <img src="@/assets/internet-radio-show-host-talking-microphone-while-checking-subject-list-laptop-popular-social-media-content-creator-speaking-audience-while-sitting-modern-studio.jpg" class="d-block w-100" alt="">
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="home">
     <header class="container">
-    
+      ALL PRODUCTS
     </header>
+    <section class="col-8-md d-inline-flex flex-wrap justify-content-evenly">
+      <ProductCard v-for="product in products" :key='product._id' :product='product' />
+    </section>
+    <ul v-if="errors && errors.length">
+      <!-- <li v-for="error of errors"> -->
+        {{error.message}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import ProductCard from '@/components/ProductCard.vue'
 export default {
-
+  components: {
+      ProductCard
+  },
+  computed: {
+      products() {
+        return this.$store.state.products
+      },
+      errors() {
+        return this.$store.state.errors
+      }
+  },
+  created() {
+      this.$store.dispatch('getProducts')
+  },
 }
 </script>
 
 <style scoped>
-/* .carousel-inner {
-  height: 92vh;
-} */
 .container {
   padding: 2rem;
   background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));;
   border-radius: 15px;
   position: relative;
-  height: 500px;
+  height: 5vh;
   line-height: 0.9;
   width: 100%;
 }
 
-img {
-  position: absolute;
-  object-fit: cover;
-  width: 10rem;
-  height: 10rem;
+.d-flex {
+    gap: 15px;
 }
 </style>
