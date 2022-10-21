@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Products />
+    <ProductAdd />
   </div>
 </template>
 
 <script>
-import Products from '@/components/Products.vue'
+import ProductAdd from '@/components/ProductAdd.vue'
 export default {
   components: {
-    Products
+    ProductAdd
   }
 }
 </script>

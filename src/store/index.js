@@ -6,11 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products: {},
+    products: [],
     product: null,
     cart: [],
     notifications: [],
-    error: ''
+    error: '',
   },
   getters: {
     cartItemCount(state) {
@@ -43,7 +43,7 @@ export default new Vuex.Store({
           quantity
         })
       }
-      console.log(productInCart)
+      // console.log(productInCart)
     },
     REMOVE_PRODUCT_FROM_CART(state, product) {
       state.cart = state.cart.filter(item => item.product._id !== product._id)
@@ -68,23 +68,23 @@ export default new Vuex.Store({
   },
   actions: {
     async getProducts({commit}) {
-      // await axios.get(URL + 'earphone')
-      // .then(response => {
-      //   commit('SET_PRODUCTS', response.data.result);
-      // })
       try {
-        let response = await API().get('earphones')
+        let response = await API().get('earphone')
         commit('SET_PRODUCTS', response.data.result);
       } catch (error) {
-        console.log(error.response.data || error.message)
+        // console.log(error.response.data || error.message)
         commit('SET_ERROR', error.response.data || error.message)
       }
     },
     async getProduct({commit}, productId) {
-      await API().get(`earphone/${productId}`)
-      .then(response => {
+      try {
+        commit('SET_PRODUCT')
+        let response = await API().get(`earphone/${productId}`)
         commit('SET_PRODUCT', response.data);
-      })
+      } catch (error) {
+        // console.log(error.response.data || error.message)
+        commit('SET_ERROR', error.response.data || error.message)
+      }
     },
     addProductToCart({commit, dispatch}, { product, quantity }) {
       commit('ADD_TO_CART', { product, quantity });

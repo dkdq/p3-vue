@@ -1,35 +1,30 @@
 <template>
-    <div class="card" v-if="error">
-        <h2 class="card-title">
-            Error
-        </h2>
-        <p class="">
-            {{ error }}
-        </p>
-        <div class="">
-        <button class="dismiss" @click.prevent="dismiss" aria-label="Dismiss Error">
-            Dismiss Error
-        </button>
-        </div>
+    <div class="alert alert-danger alert-dismissible fade show alert-animation rounded-4 shadow text-md-center" role="alert" v-if="error">
+        <h2>Error</h2>
+        <p>{{ error }}</p>
+        <button type="button" class="btn btn-close btn-lg" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </template>
 
 <script>
   export default {
     name: "ErrorMessage",
-    methods: {
-        dismiss() {
-            this.$store.state.error = "";
-        },
-    },
     computed: {
         error() {
-            return this.$store.state.error
+            return this.$store.state.error;
         }
     }
   };
 </script>
 
-<style>
+<style scoped>
+.alert {
+    position: relative;
+    margin: 0 auto;
+    width: 90vw;
+}
 
+.alert-animation {
+    animation: fade-in .5s ease;
+}
 </style>

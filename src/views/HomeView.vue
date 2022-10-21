@@ -1,24 +1,19 @@
 <template>
   <div class="home">
-    <header class="container">
+    <header class="container fs-1 text-center rounded-4">
       ALL PRODUCTS
     </header>
     <section class="col-8-md d-inline-flex flex-wrap justify-content-evenly">
-      <ProductCard v-for="product in products" :key='product._id' :product='product' />
+      <ProductList v-for="product in products" :key="product._id" :product="product" />
     </section>
-    <ul v-if="errors && errors.length">
-      <!-- <li v-for="error of errors"> -->
-        {{error.message}}
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
-import ProductCard from '@/components/ProductCard.vue'
+import ProductList from '@/components/ProductList.vue'
 export default {
   components: {
-      ProductCard
+      ProductList
   },
   computed: {
       products() {
@@ -36,13 +31,13 @@ export default {
 
 <style scoped>
 .container {
-  padding: 2rem;
-  background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));;
-  border-radius: 15px;
   position: relative;
-  height: 5vh;
-  line-height: 0.9;
-  width: 100%;
+  width: 90vw;
+  height: 10vh;
+  padding: 1rem;
+
+  color: whitesmoke;
+  background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));;
 }
 
 .d-flex {

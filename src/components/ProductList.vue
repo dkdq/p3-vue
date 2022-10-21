@@ -26,7 +26,7 @@ export default {
                 quantity: 1
             })
         }
-    }
+    },
 }
 </script>
 
