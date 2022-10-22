@@ -9,15 +9,8 @@
           <h3>${{ product.price }}</h3>
           <input type="text" class="text-center col-1 me-2 p-1" @keyup.enter="addToCart()" v-model.number="quantity">
           <button class="btn btn-secondary rounded-4" @click="addToCart()">Add to Cart</button>
-          <p class="mt-4">{{ product.type }}</p>
-          {{ product.hours.music }}
-          {{ product.hours.cableCharging }}
-          {{ product.hours.boxCharging }}
+          <p class="mt-4">{{ product.type }}</p>,
           {{ product.color }}
-          {{ product.stock }}
-          {{ product.earbuds }}
-          {{ product.dustWaterproof }}
-          {{ product.bluetooth }}
           {{ product.connectors }}
           <div v-for="user in product.review" :key="user._id">
             Email:{{ user.email }}

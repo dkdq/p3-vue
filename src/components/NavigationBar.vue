@@ -12,7 +12,7 @@
         <div class="offcanvas-body align-items-center justify-content-lg-evenly">
           <router-link to="/" @click.native="$refs.offcanvasButton.click()">Home</router-link>|
           <router-link to="/products" @click.native="$refs.offcanvasButton.click()">Products</router-link>|
-          <router-link to="/contacts" @click.native="$refs.offcanvasButton.click()">Contacts</router-link>
+          <router-link to="/admin" @click.native="$refs.offcanvasButton.click()">Admin</router-link>
 
           <form class="d-flex p-2" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

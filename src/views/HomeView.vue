@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <header class="container fs-1 text-center rounded-4">
+    <header class="container fs-1 text-center rounded-4 align-middle">
       ALL PRODUCTS
     </header>
     <section class="col-8-md d-inline-flex flex-wrap justify-content-evenly">
@@ -22,10 +22,7 @@ export default {
       errors() {
         return this.$store.state.errors
       }
-  },
-  created() {
-      this.$store.dispatch('getProducts')
-  },
+  }
 }
 </script>
 

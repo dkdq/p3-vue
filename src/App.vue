@@ -18,6 +18,9 @@ export default {
     NotificationList,
     ErrorMessage
   },
+  created() {
+    this.$store.dispatch('getProducts')
+  },
 }
 </script>
 

@@ -2,7 +2,6 @@
     <div class="alert alert-danger alert-dismissible fade show alert-animation rounded-4 shadow text-md-center" role="alert" v-if="error">
         <h2>Error</h2>
         <p>{{ error }}</p>
-        <button type="button" class="btn btn-close btn-lg" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </template>
 
@@ -13,7 +12,7 @@
         error() {
             return this.$store.state.error;
         }
-    }
+    },
   };
 </script>
 

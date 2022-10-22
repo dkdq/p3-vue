@@ -65,6 +65,14 @@ export default new Vuex.Store({
     SET_ERROR(state, payload) {
       state.error = payload;
     },
+    ADD_PRODUCT(state, product){
+      let products = state.products.concat(product)
+      state.products = products;
+    },
+    DELETE_PRODUCT(state, productId){
+      let products = state.products.filter(p => p.id != productId)
+      state.products = products;
+    },
   },
   actions: {
     async getProducts({commit}) {
@@ -72,7 +80,6 @@ export default new Vuex.Store({
         let response = await API().get('earphone')
         commit('SET_PRODUCTS', response.data.result);
       } catch (error) {
-        // console.log(error.response.data || error.message)
         commit('SET_ERROR', error.response.data || error.message)
       }
     },
@@ -81,6 +88,24 @@ export default new Vuex.Store({
         commit('SET_PRODUCT')
         let response = await API().get(`earphone/${productId}`)
         commit('SET_PRODUCT', response.data);
+      } catch (error) {
+        commit('SET_ERROR', error.response.data || error.message)
+      }
+    },
+    async createProduct({commit}, product) {
+      try {
+        await API().post('add', product)
+        commit('ADD_PRODUCT', product);
+      } catch (error) {
+        // console.log(error.response.data || error.message)
+        commit('SET_ERROR', error.response.data || error.message)
+      }
+    },
+    async deleteProduct({commit}, product) {
+      try {
+        let response = await API().delete(`/earphone/${product._id}`);
+        console.log(response)
+        commit('DELETE_PRODUCT', product._id);
       } catch (error) {
         // console.log(error.response.data || error.message)
         commit('SET_ERROR', error.response.data || error.message)

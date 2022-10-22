@@ -17,7 +17,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "products" */ '../views/ProductView.vue')
   },
   {
-    path: '/add',
+    path: '/product/add',
     name: 'add',
     component: () => import(/* webpackChunkName: "add" */ '@/components/ProductAdd.vue')
   },
@@ -33,10 +33,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "edit" */ '@/components/ProductEdit.vue')
   },
   {
-    path: '/contacts/:id',
-    name: 'contacts',
+    path: '/admin',
+    name: 'admin',
     params: true,
-    component: () => import(/* webpackChunkName: "contacts" */ '../views/ContactsView.vue')
+    component: () => import(/* webpackChunkName: "admin" */ '../views/AdminView.vue')
   },
   {
     path: '*',
