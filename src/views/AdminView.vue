@@ -17,7 +17,7 @@
             <div class="col-1">{{ product.price }}</div>
             <div class="col-4">
                 <router-link :to="{name: 'product', params: {id: product._id} }">Show</router-link>
-                <router-link to="">Edit</router-link>
+                <router-link :to="{name: 'edit', params: {id: product._id} }">Edit</router-link>
                 <button class="btn btn-danger rounded-4" @click="deleteProduct(product)">Delete</button>
             </div>
         </div>

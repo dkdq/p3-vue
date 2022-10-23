@@ -22,12 +22,10 @@
               <input type="radio" value="on-ear" v-model="product.type" /><label>on-ear</label>
               <input type="radio" value="over-ear" v-model="product.type" /><label>over-ear</label>
           </div>
-          <!-- <div>
-            <label class="col-4 col-md-3">Hours</label>
-              <input type="checkbox" value="music" v-model="product.hours.music"><label>Music</label>
-              <input type="checkbox" value="cableCharging" v-model="product.hours.cableCharging"><label>Cable Charging</label>
-              <input type="checkbox" value="boxCharging" v-model="product.hours.boxCharging"><label>Box Charging</label>
-          </div> -->
+          <div>
+            <label class="col-4 col-md-3">Dust&Waterproof</label>
+              <input type="checkbox" value="true" v-model="product.dustWaterproof"><label>Yes</label>
+          </div>
           <div>
             <label class="col-4 col-md-3">Connector</label>
             <select v-model="product.connectors">
@@ -49,14 +47,14 @@
         </form>
       </div>
       <div class="col-md-4">
-        <ProductList :product="product"/>
+        <!-- <ProductList :product="product"/> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ProductList from '@/components/ProductList.vue'
+// // import ProductList from '@/components/ProductList.vue'
 export default {
   data() {
     return {
@@ -65,21 +63,20 @@ export default {
         price: '',
         type: '',
         image: '',
-        // hours: {},
+        dustWaterproof: false,
         color: [],
         connectors: ''
       },
     }
   },
   components: {
-    ProductList
+    // ProductList
   },
   methods: {
     createProduct() {
       this.$store.dispatch('createProduct', this.product)
-      // this.$router.push('/')
     }
-  }
+  },
 }
 </script>
 

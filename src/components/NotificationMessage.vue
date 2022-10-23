@@ -21,7 +21,7 @@ export default {
     created() {
         this.timeout = setTimeout(() => {
             this.$store.dispatch('removeNotification', this.notification);
-        }, 5000);
+        }, 10000);
     },
     beforeDestroy() {
         clearTimeout(this.timeout);

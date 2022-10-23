@@ -69,6 +69,10 @@ export default new Vuex.Store({
       let products = state.products.concat(product)
       state.products = products;
     },
+    EDIT_PRODUCT(state, product){
+      let index = state.products.findIndex(p => p._id === product._id)
+      if(index !== -1) state.products.splice(index, 1, product)
+    },
     DELETE_PRODUCT(state, productId){
       let products = state.products.filter(p => p.id != productId)
       state.products = products;
@@ -92,22 +96,35 @@ export default new Vuex.Store({
         commit('SET_ERROR', error.response.data || error.message)
       }
     },
-    async createProduct({commit}, product) {
+    async createProduct({commit, dispatch}, product) {
       try {
-        await API().post('add', product)
+        await API().post('add', product);
         commit('ADD_PRODUCT', product);
+        dispatch('addNotification', {
+          type: 'success',
+          message: `${product.brandModel} added to Product List.`
+        });
       } catch (error) {
-        // console.log(error.response.data || error.message)
         commit('SET_ERROR', error.response.data || error.message)
       }
     },
-    async deleteProduct({commit}, product) {
+    async editProduct({commit}, product) {
       try {
-        let response = await API().delete(`/earphone/${product._id}`);
-        console.log(response)
-        commit('DELETE_PRODUCT', product._id);
+        let response = await API().put(`earphone/${product._id}`, product);
+        commit('EDIT_PRODUCT', response.data.result);
       } catch (error) {
-        // console.log(error.response.data || error.message)
+        commit('SET_ERROR', error.response.data || error.message)
+      }
+    },
+    async deleteProduct({commit, dispatch}, product) {
+      try {
+        await API().delete(`earphone/${product._id}`);
+        commit('DELETE_PRODUCT', product._id);
+        dispatch('addNotification', {
+          type: 'warning',
+          message: `${product.brandModel} removed from Product List.`
+        });
+      } catch (error) {
         commit('SET_ERROR', error.response.data || error.message)
       }
     },

@@ -9,7 +9,7 @@
           <h3>${{ product.price }}</h3>
           <input type="text" class="text-center col-1 me-2 p-1" @keyup.enter="addToCart()" v-model.number="quantity">
           <button class="btn btn-secondary rounded-4" @click="addToCart()">Add to Cart</button>
-          <p class="mt-4">{{ product.type }}</p>,
+          <p class="mt-4">{{ product.type }}</p>
           {{ product.color }}
           {{ product.connectors }}
           <div v-for="user in product.review" :key="user._id">

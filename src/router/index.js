@@ -28,8 +28,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "product" */ '@/components/Product.vue')
   },
   {
-    path: '/product/edit',
+    path: '/product/edit/:id',
     name: 'edit',
+    params: true,
     component: () => import(/* webpackChunkName: "edit" */ '@/components/ProductEdit.vue')
   },
   {
