@@ -22,7 +22,7 @@ export default new Vuex.Store({
         total += item.product.price * item.quantity
       )
       return total.toFixed(2);
-    }
+    },
   },
   mutations: {
     SET_PRODUCTS(state, products) {
@@ -70,8 +70,11 @@ export default new Vuex.Store({
       state.products = products;
     },
     EDIT_PRODUCT(state, product){
-      let index = state.products.findIndex(p => p._id === product._id)
-      if(index !== -1) state.products.splice(index, 1, product)
+      // let index = state.products.findIndex(p => p._id === product._id)
+      // if(index !== -1) state.products.splice(index, 1, product)
+      state.products.forEach(p => {
+        if(p._id == product._id) p = product
+      })
     },
     DELETE_PRODUCT(state, productId){
       let products = state.products.filter(p => p.id != productId)
@@ -108,10 +111,16 @@ export default new Vuex.Store({
         commit('SET_ERROR', error.response.data || error.message)
       }
     },
-    async editProduct({commit}, product) {
+    async editProduct({commit, dispatch}, product) {
       try {
         let response = await API().put(`earphone/${product._id}`, product);
-        commit('EDIT_PRODUCT', response.data.result);
+        let savedProduct = response.data.result;
+        commit('EDIT_PRODUCT', savedProduct);
+        dispatch('addNotification', {
+          type: 'success',
+          message: `${product.brandModel} edited to Product List.`
+        });
+        return savedProduct;
       } catch (error) {
         commit('SET_ERROR', error.response.data || error.message)
       }

@@ -6,11 +6,11 @@
                 <h4 class="card-title">
                     <router-link :to="{name: 'product', params: {id: product._id} }">{{ product.brandModel }}</router-link>
                 </h4>
-                <!-- <strong>${{ product.price }}</strong>
-                <p class="card-text">{{ product.type }}</p> -->
+                <strong>${{ product.price }}</strong>
+                <p class="card-text">{{ product.type }}</p>
             </div>
             <div class="px-3 pb-3">
-                <button class="btn btn-secondary rounded-4" @click="addToCart()">Add to Cart</button>
+                <button class="btn btn-secondary rounded-4 shadow" @click="addToCart()">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -18,7 +18,6 @@
 
 <script>
 export default {
-    
     props: ['product'],
     methods: {
         addToCart() {

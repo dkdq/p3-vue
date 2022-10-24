@@ -26,7 +26,7 @@
       </button>
 
       <div class="dropdown">
-        <a class="btn dropdown-toggle rounded-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="btn dropdown-toggle rounded-4 shadow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ cartItemCount }} Cart
         </a>
         <div @click="$event.stopPropagation()">

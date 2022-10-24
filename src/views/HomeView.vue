@@ -4,16 +4,16 @@
       ALL PRODUCTS
     </header>
     <section class="col-8-md d-inline-flex flex-wrap justify-content-evenly">
-      <ProductList v-for="product in products" :key="product._id" :product="product" />
+      <ProductListProduct v-for="product in products" :key="product._id" :product="product" />
     </section>
   </div>
 </template>
 
 <script>
-import ProductList from '@/components/ProductList.vue'
+import ProductListProduct from '@/components/ProductListProduct.vue'
 export default {
   components: {
-      ProductList
+      ProductListProduct
   },
   computed: {
       products() {
