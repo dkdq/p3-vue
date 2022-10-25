@@ -1,6 +1,6 @@
 <template>
-    <div class="col-12 col-sm-3 m-2 shadow card-animation">
-        <div class="card h-100 text-start border-light">
+    <div class="col-12 col-sm-3 m-2 card-animation">
+        <div class="card h-100 shadow text-start border-light">
             <img :src="product.image" class="w-100" alt="">
             <div class="card-body">
                 <h4 class="card-title">

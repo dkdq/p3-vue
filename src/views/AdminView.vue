@@ -5,7 +5,7 @@
             <router-link to="/product/add">Add Product</router-link>
         </button>
         <div v-if="products">
-            <div class="row p-2">
+            <div class="row p-2 h5">
                 <div class="col-5">Brand Model</div>
                 <div class="col-2">Type</div>
                 <div class="col-1">Price</div>
@@ -37,9 +37,8 @@ export default {
     },
     methods: {
         deleteProduct(product) {
-            // let response = prompt(`Are you sure you want to delete ${product.brandModel}`)
-            // if(response) 
-            this.$store.dispatch('deleteProduct', product)
+            let response = prompt(`Are you sure you want to delete ${product.brandModel}`)
+            if(response) this.$store.dispatch('deleteProduct', product)
         }
     },
     updated() {

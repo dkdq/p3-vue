@@ -11,6 +11,7 @@ export default new Vuex.Store({
     cart: [],
     notifications: [],
     error: '',
+    isActive: true
   },
   getters: {
     cartItemCount(state) {
@@ -43,7 +44,6 @@ export default new Vuex.Store({
           quantity
         })
       }
-      // console.log(productInCart)
     },
     REMOVE_PRODUCT_FROM_CART(state, product) {
       state.cart = state.cart.filter(item => item.product._id !== product._id)
@@ -80,6 +80,9 @@ export default new Vuex.Store({
       let products = state.products.filter(p => p.id != productId)
       state.products = products;
     },
+    IS_ACTIVE(state) {
+      state.isActive = !state.isActive;
+    }
   },
   actions: {
     async getProducts({commit}) {

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>PRODUCT CREATE PAGE</h1>
-    <ProductForm @form-submitted="createProduct" :button="button" :class="buttonColor"/>
+    <ProductForm @form-submitted="createProduct" :button="button" :title="title"/>
   </div>
 </template>
 
@@ -11,7 +10,8 @@ export default {
   data() {
     return {
       button: 'Create',
-      buttonColor: 'btn-success'
+      colorAdd: {'btn-success': true},
+      title: 'CREATE'
     }
   },
   components: {
@@ -20,7 +20,7 @@ export default {
   methods: {
     createProduct(product) {
       this.$store.dispatch('createProduct', product);
-    }
+    },
   },
   updated() {
     return this.$store.dispatch('getProducts')

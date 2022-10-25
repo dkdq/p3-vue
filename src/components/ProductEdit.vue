@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
-      <ProductForm @form-submitted="editProduct" :defaultValues="product" :button="button"/>
-    </div>
+  <div>
+    <ProductForm @form-submitted="editProduct" :defaultValues="product" :button="button" :title="title"/>
+  </div>
 </template>
 
 <script>
@@ -9,7 +9,8 @@ import ProductForm from '@/components/ProductForm.vue'
 export default {
   data() {
     return {
-      button: 'Save'
+      button: 'Save',
+      title: 'EDIT'
     }
   },
   computed: {

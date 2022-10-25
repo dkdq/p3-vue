@@ -2,7 +2,7 @@
     <div :class="typeClass" class="alert alert-dismissible fade show fade-animation rounded-4" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     {{ notification.message }}
-  </div>
+    </div>
 </template>
 
 <script>

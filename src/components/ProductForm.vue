@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+  <div class="container">
+    <h3>PRODUCT {{ title }} PAGE</h3>
     <div class="row">
       <div class="col-12 col-md-7">
         <form>
@@ -54,7 +55,7 @@
               </select>
             </div>
           </div>
-          <button @click.prevent="submit" class="btn rounded-4 shadow mb-1 mt-1" :class="{colorChange}">{{ button }}</button>
+          <button @click.prevent="submit" class="btn rounded-4 shadow mb-1 mt-1" :class="colorChange">{{ button }}</button>
         </form>
       </div>
       <ProductListProduct :product="product"/>
@@ -65,47 +66,42 @@
 <script>
 import ProductListProduct from '@/components/ProductListProduct.vue'
 export default {
-    props: ['button', 'defaultValues', 'buttonColor'],
+    props: ['button', 'title', 'defaultValues', 'colorChange'],
     data() {
-        return {
-            product: {
-                _id: this.defaultValues?._id,
-                brandModel: this.defaultValues?.brandModel || '',
-                price: this.defaultValues?.price || '',
-                type: this.defaultValues?.type || '',
-                image: this.defaultValues?.image || '',
-                dustWaterproof: this.defaultValues?.dustWaterproof || false,
-                color: this.defaultValues?.color || [],
-                connectors: this.defaultValues?.connectors || ''
-            },
-        }
+      return {
+        product: {
+          _id: this.defaultValues?._id,
+          brandModel: this.defaultValues?.brandModel || '',
+          price: this.defaultValues?.price || '',
+          type: this.defaultValues?.type || '',
+          image: this.defaultValues?.image || '',
+          dustWaterproof: this.defaultValues?.dustWaterproof || false,
+          color: this.defaultValues?.color || [],
+          connectors: this.defaultValues?.connectors || ''
+        },
+      }
     },
     components: {
         ProductListProduct,
     },
     methods: {
-        submit() {
-            this.$emit("form-submitted", {
-                _id: this.product._id,
-                brandModel: this.product.brandModel,
-                price: this.product.price,
-                type: this.product.type,
-                image: this.product.image,
-                dustWaterproof: this.product.dustWaterproof,
-                color: this.product.color,
-                connectors: this.product.connectors
-            });
-        }
-    },
-    computed: {
-      colorChange() {
-        return this.buttonColor
+      submit() {
+        this.$emit("form-submitted", {
+          _id: this.product._id,
+          brandModel: this.product.brandModel,
+          price: this.product.price,
+          type: this.product.type,
+          image: this.product.image,
+          dustWaterproof: this.product.dustWaterproof,
+          color: this.product.color,
+          connectors: this.product.connectors
+        });
       }
-    }
+    },
 }
 </script>
 
-<style>
+<style scoped>
 button {
   color: whitesmoke !important;
 }
