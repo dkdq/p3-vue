@@ -1,10 +1,10 @@
 <template>
-    <div class="col-12 col-sm-3 m-2 card-animation">
+    <div class="col-12 col-sm-3 col-lg-2 m-2 card-animation">
         <div class="card h-100 shadow text-start border-light">
             <img :src="product.image" class="w-100" alt="">
             <div class="card-body">
                 <h4 class="card-title">
-                    <router-link :to="{name: 'product', params: {id: product._id} }">{{ product.brandModel }}</router-link>
+                    <router-link :to="{name: 'product', params: {id: product._id} }">{{ product.brandModel | abbreviate }}</router-link>
                 </h4>
                 <strong>${{ product.price }}</strong>
                 <p class="card-text">{{ product.type }}</p>
@@ -27,6 +27,15 @@ export default {
             })
         }
     },
+    filters: {
+        abbreviate(title) {
+            if(title.length >= 20) {
+                return title && title.slice(0, 27) + '...'
+            } else {
+                return title
+            }
+        }
+    }
 }
 </script>
 
@@ -42,6 +51,9 @@ export default {
     }
 }
 
+.card {
+    max-height: 28rem;
+}
 .card-animation {
     animation: fade-in 1s ease;
 }

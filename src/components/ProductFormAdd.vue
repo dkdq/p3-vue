@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductForm @form-submitted="createProduct" :button="button" :title="title"/>
+    <ProductForm @form-submitted="createProduct" :buttonText="btnTitle" :title="pageTitle" :buttonClass="btnClass"/>
   </div>
 </template>
 
@@ -9,9 +9,9 @@ import ProductForm from '@/components/ProductForm.vue'
 export default {
   data() {
     return {
-      button: 'Create',
-      colorAdd: {'btn-success': true},
-      title: 'CREATE'
+      btnTitle: 'Create',
+      pageTitle: 'CREATE',
+      btnClass: 'btn-success'
     }
   },
   components: {
@@ -20,6 +20,7 @@ export default {
   methods: {
     createProduct(product) {
       this.$store.dispatch('createProduct', product);
+      this.$router.push('/admin')
     },
   },
   updated() {

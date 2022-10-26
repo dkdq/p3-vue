@@ -63,6 +63,7 @@ nav a.router-link-exact-active {
 .dropdown a {
   background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
   color: #dbdbdb;
+  border: none;
 }
 
 .navbar-brand, .offcanvas-title {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductForm @form-submitted="editProduct" :defaultValues="product" :button="button" :title="title"/>
+    <ProductForm @form-submitted="editProduct" :defaultValues="product" :buttonText="btnTitle" :title="pageTitle" :buttonClass="btnClass"/>
   </div>
 </template>
 
@@ -9,8 +9,9 @@ import ProductForm from '@/components/ProductForm.vue'
 export default {
   data() {
     return {
-      button: 'Save',
-      title: 'EDIT'
+      btnTitle: 'Save',
+      pageTitle: 'EDIT',
+      btnClass: 'btn-primary'
     }
   },
   computed: {
@@ -27,6 +28,7 @@ export default {
   methods: {
     async editProduct(updatedProduct) {
       await this.$store.dispatch('editProduct', updatedProduct);
+      this.$router.push('/admin')
     }
   },
   updated() {

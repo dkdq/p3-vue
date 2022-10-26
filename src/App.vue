@@ -1,15 +1,15 @@
 <template>
   <div id="app" :style="[isActive ? backgroundAnimation : '']">
     <NavigationBar />
-    <router-view />
-    <NotificationList />
     <ErrorMessage />
+    <router-view />
+    <NotificationListNotification />
   </div>
 </template>
 
 <script>
 import NavigationBar from '@/components/NavigationBar.vue'
-import NotificationList from '@/components/NotificationList.vue'
+import NotificationListNotification from '@/components/NotificationListNotification.vue'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export default {
@@ -30,7 +30,7 @@ export default {
   },
   components: {
     NavigationBar,
-    NotificationList,
+    NotificationListNotification,
     ErrorMessage
   },
   created() {
@@ -70,7 +70,7 @@ export default {
   transform: var(--transform);
   background: var(--background);
   z-index: var(--z-index);
-  /* animation: wave 8s ease-in-out infinite alternate */
+  animation: wave 8s ease-in-out infinite alternate
 }
 
 @keyframes wave {

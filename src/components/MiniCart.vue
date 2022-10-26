@@ -45,9 +45,11 @@ export default {
 
 <style scoped>
 .dropdown-menu {
+    max-height: 90vh;
     min-width: 320px;
     right: 0;
     left: auto !important;
+    overflow-x: hidden;
 }
 
 a {
@@ -83,6 +85,7 @@ a {
 .btn {
     background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
     color: whitesmoke;
+    border: none;
 }
 
 @media (min-width: 768px) {

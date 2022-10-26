@@ -55,7 +55,7 @@
               </select>
             </div>
           </div>
-          <button @click.prevent="submit" class="btn rounded-4 shadow mb-1 mt-1" :class="colorChange">{{ button }}</button>
+          <button @click.prevent="submit" class="btn rounded-4 shadow mb-1 mt-1" :class="buttonClass">{{ buttonText }}</button>
         </form>
       </div>
       <ProductListProduct :product="product"/>
@@ -66,7 +66,7 @@
 <script>
 import ProductListProduct from '@/components/ProductListProduct.vue'
 export default {
-    props: ['button', 'title', 'defaultValues', 'colorChange'],
+    props: ['buttonText', 'title', 'defaultValues', 'buttonClass'],
     data() {
       return {
         product: {
@@ -98,6 +98,9 @@ export default {
         });
       }
     },
+    updated() {
+      return this.$store.dispatch('getProducts')
+    }
 }
 </script>
 

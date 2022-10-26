@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <header class="text-center rounded-4">
-      <h1>
-        ALL PRODUCTS
-      </h1>
+      <h1>ALL PRODUCTS</h1>
     </header>
     <section class="overflow-auto">
       <div class="col-8-md d-inline-flex flex-wrap justify-content-evenly">
