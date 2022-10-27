@@ -1,7 +1,7 @@
 <template>
-    <div class="col-12 col-sm-3 col-lg-2 m-2 card-animation">
-        <div class="card h-100 shadow text-start border-light">
-            <img :src="product.image" class="w-100" alt="">
+    <div class="col-sm-3 col-lg-2 m-2 card-animation">
+        <div class="card h-100 shadow text-start border-light scale">
+            <img :src="product.image" class="">
             <div class="card-body">
                 <h4 class="card-title">
                     <router-link :to="{name: 'product', params: {id: product._id} }">{{ product.brandModel | abbreviate }}</router-link>
@@ -10,7 +10,7 @@
                 <p class="card-text">{{ product.type }}</p>
             </div>
             <div class="px-3 pb-3">
-                <button class="btn btn-secondary rounded-4 shadow" @click="addToCart()">Add to Cart</button>
+                <button class="btn btn-secondary rounded-4 shadow skew" @click="addToCart()">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -39,21 +39,24 @@ export default {
 }
 </script>
 
-<style scoped>
-@media (min-width: 1024px) {
-    .card{
-        transform: scale(1);
-        transition: transform 0.5s ease;
-    }
+<style>
+.scale {
+    transition: transform 0.5s ease;
+}
 
-    .card:hover{
-        transform: scale(1.1)
-    }
+.scale:hover{
+    transform: scale(1.1)
 }
 
 .card {
-    max-height: 28rem;
+    max-width: 23rem;
+    max-height: 34rem;
 }
+
+img {
+    width: 100%;
+}
+
 .card-animation {
     animation: fade-in 1s ease;
 }

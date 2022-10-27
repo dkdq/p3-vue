@@ -16,8 +16,8 @@
         <hr />
         </div>
         <div class="d-flex justify-content-between">
-            <button v-if="cart.length" class="btn rounded-4">Checkout (${{ cartTotalPrice }})</button>
-            <a :class="{disabled: cart.length === 0 }" href="#" @click.prevent="clearCartItems()">clear cart</a>
+            <button v-if="cart.length" class="btn rounded-4 skew">Checkout (${{ cartTotalPrice }})</button>
+            <a :class="{disabled: cart.length === 0 }" href="#" @click.prevent="clearCartItems()" class="me-2">clear cart</a>
         </div>
     </div>
 </template>
@@ -46,7 +46,7 @@ export default {
 <style scoped>
 .dropdown-menu {
     max-height: 90vh;
-    min-width: 320px;
+    min-width: 17rem;
     right: 0;
     left: auto !important;
     overflow-x: hidden;
@@ -64,11 +64,6 @@ a {
 .cartImage {
     width: 100%;
 }
-
-/* .d-flex > div {
-    padding: 5px;
-    flex: 1 1 0;
-} */
 
 .grid {
     display: grid;
@@ -90,7 +85,7 @@ a {
 
 @media (min-width: 768px) {
     .dropdown-menu {
-        min-width: 320px;
+        min-width: 30rem;
         right: 0;
         left: auto !important;
     }

@@ -53,10 +53,10 @@ container {
 
 header {
   position: relative;
-  width: 90vw;
+  max-width: 95vw;
   height: 10vh;
   padding: 1rem;
-
+  
   color: whitesmoke;
   background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
 }

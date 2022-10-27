@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md bg-light justify-content-center fixed-top shadow">
     <div class="container">
-      <router-link to="/" class="navbar-brand">Earphone</router-link>
+      <router-link to="/" class="navbar-brand scale">Earphone</router-link>
       
       <div class="offcanvas offcanvas-end p-2" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header p-2">
@@ -9,9 +9,9 @@
           <button ref="offcanvasButton" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
-        <div class="offcanvas-body align-items-center justify-content-lg-evenly">
-          <router-link to="/" @click.native="$refs.offcanvasButton.click()">Home</router-link>|
-          <router-link to="/admin" @click.native="$refs.offcanvasButton.click()">Admin</router-link>
+        <div class="offcanvas-body align-items-center justify-content-evenly justify-content-lg-evenly">
+          <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Home</router-link>|
+          <router-link to="/admin" @click.native="$refs.offcanvasButton.click()" class="scale">Admin</router-link>
         </div>
       </div>
       
@@ -20,7 +20,7 @@
       </button>
 
       <div class="dropdown">
-        <a class="btn dropdown-toggle rounded-4 shadow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="btn dropdown-toggle rounded-4 shadow scale skew" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ cartItemCount }} Cart
         </a>
         <div @click="$event.stopPropagation()">
@@ -75,13 +75,14 @@ nav a.router-link-exact-active {
   animation: fade-in 1s ease;
 }
 
-@media (min-width: 320px) {
+@media (max-width: 320px) {
   .navbar-brand {
-    width: 8.5rem;
-    font-size: 1.9rem;
+    width: 8rem;
+    font-size: 1.8rem;
   }
+  
   .container {
-    padding: 1px;
+    margin-inline-start: 1px;
   }
 }
 </style>

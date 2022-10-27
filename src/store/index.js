@@ -58,9 +58,7 @@ export default new Vuex.Store({
       })
     },
     REMOVE_NOTIFICATION(state, notificationToRemove) {
-      state.notifications = state.notifications.filter(notification => {
-          return notification.id != notificationToRemove.id;
-      })
+      state.notifications = state.notifications.filter(notification => notification.id != notificationToRemove.id)
     },
     SET_ERROR(state, payload) {
       state.error = payload;

@@ -3,13 +3,13 @@
     <NavigationBar />
     <ErrorMessage />
     <router-view />
-    <NotificationListNotification />
+    <NotificationList />
   </div>
 </template>
 
 <script>
 import NavigationBar from '@/components/NavigationBar.vue'
-import NotificationListNotification from '@/components/NotificationListNotification.vue'
+import NotificationList from '@/components/NotificationList.vue'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
 export default {
@@ -30,7 +30,7 @@ export default {
   },
   components: {
     NavigationBar,
-    NotificationListNotification,
+    NotificationList,
     ErrorMessage
   },
   created() {
@@ -48,6 +48,7 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Exo+2');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
 #app {
   background-color: linear-gradient(rgb(67, 124, 205), rgb(69, 214, 202)) !important;
   font-family: 'Exo 2', sans-serif !important;
@@ -70,7 +71,7 @@ export default {
   transform: var(--transform);
   background: var(--background);
   z-index: var(--z-index);
-  animation: wave 8s ease-in-out infinite alternate
+  /* animation: wave 8s ease-in-out infinite alternate */
 }
 
 @keyframes wave {

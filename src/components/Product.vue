@@ -1,19 +1,25 @@
 <template>
   <div class="container">
-    <div class="row mt-5" v-if="product">
-      <div class="col-4">
-        <span :src="product.image" class="w-100 shadow" alt="" />
+    <div class="row mt-2" v-if="product">
+      <div class="col-sm-6 col-lg-5">
+        <img :src="product.image" class="w-100 shadow mb-3" alt="" />
       </div>
-      <div class="col-8">
-        <h1>{{ product.brandModel }} {{ colorText }}</h1>
+      <div class="col-sm-6 col-lg-7">
+        <h1>{{ product.brandModel }} <span :style="{color: colorText}">{{ colorText }}</span></h1>
         <h3>${{ product.price }}</h3>
-        <input type="text" class="text-center col-1 me-2 p-1" @keyup.enter="addToCart()" v-model.number="quantity"/>
-        <button class="btn btn-info rounded-4 shadow" @click="addToCart()">Add to Cart</button>
-        <p class="mt-4">{{ product.type }}</p>
-        <div v-for="(c, index) in product.color" :key="index" class="d-inline-flex me-2">
-          <div @mouseenter="selectedColor(index)" @mouseleave="selectedColor" class="colorCircle" :style="{backgroundColor: c}"></div>
+
+        <div>
+          <input type="text" class="text-center col-1 me-2 p-1" @keyup.enter="addToCart()" v-model.number="quantity"/>
+          <button class="btn btn-info rounded-4 shadow skew" @click="addToCart()">Add to Cart</button>
         </div>
+
+        <div v-for="(c, index) in product.color" :key="index" class="d-inline-flex me-2 mt-3 scale">
+          <div @mouseenter="selectedColor(index)" @mouseleave="selectedColor" class="colorCircle shadow" :style="{backgroundColor: c}"></div>
+        </div>
+
+        <div><i class="bi bi-ear"></i>{{ product.type }}</div>
         <div><i class="bi bi-battery-charging"></i> {{ product.connectors }}</div>
+
         <div v-if="product.dustWaterproof == true"><i class="bi bi-shield-check"></i>Dust & Waterproof</div>
         <div v-else><i class="bi bi-shield-x"></i>Dust & Waterproof</div>
       </div>
@@ -65,6 +71,10 @@ button {
   margin: 50%;
 }
 
+span {
+  text-transform: uppercase;
+}
+
 .colorCircle {
   width: 3rem;
   height: 3rem;
@@ -75,5 +85,13 @@ button {
 
 .bi {
   font-size: 3rem;
+}
+
+.bi-shield-x {
+  color: red;
+}
+
+.bi-shield-check {
+  color: olive;
 }
 </style>

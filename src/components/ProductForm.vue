@@ -55,7 +55,7 @@
               </select>
             </div>
           </div>
-          <button @click.prevent="submit" class="btn rounded-4 shadow mb-1 mt-1" :class="buttonClass">{{ buttonText }}</button>
+          <button @click.prevent="submit" class="btn rounded-4 shadow mb-1 mt-1 skew" :class="buttonClass">{{ buttonText }}</button>
         </form>
       </div>
       <ProductListProduct :product="product"/>
