@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <div class="row mt-2" v-if="product">
+    <div v-if="!product" class="spinner-grow text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div v-else class="row mt-2">
       <div class="col-sm-6 col-lg-5">
         <img :src="product.image" class="w-100 shadow mb-3" alt="" />
       </div>
@@ -24,9 +27,6 @@
         <div v-else><i class="bi bi-shield-x"></i>Dust & Waterproof</div>
       </div>
     </div>
-    <div v-else class="spinner-grow text-info" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
   </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
       return this.$store.state.product;
     },
   },
-  mounted() {
+  created() {
     this.$store.dispatch("getProduct", this.id);
   },
   methods: {

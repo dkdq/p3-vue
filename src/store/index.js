@@ -88,7 +88,7 @@ export default new Vuex.Store({
         let response = await API().get('earphone')
         commit('SET_PRODUCTS', response.data.result);
       } catch (error) {
-        commit('SET_ERROR', error.response.data || error.message)
+        commit('SET_ERROR', error.message)
       }
     },
     async getProduct({commit}, productId) {

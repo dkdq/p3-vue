@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import NotFoundView from '../views/NotFoundView.vue'
+import NotFoundView from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -8,13 +8,13 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/admin',
     name: 'admin',
     params: true,
-    component: () => import(/* webpackChunkName: "admin" */ '../views/AdminView.vue')
+    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue')
   },
   {
     path: '/product/add',
@@ -25,7 +25,7 @@ const routes = [
     path: '/product/:id',
     name: 'product',
     props: true,
-    component: () => import(/* webpackChunkName: "product" */ '@/components/Product.vue')
+    component: () => import(/* webpackChunkName: "product" */ '@/views/Product.vue')
   },
   {
     path: '/product/edit/:id',

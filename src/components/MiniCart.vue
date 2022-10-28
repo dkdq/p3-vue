@@ -46,7 +46,7 @@ export default {
 <style scoped>
 .dropdown-menu {
     max-height: 90vh;
-    min-width: 17rem;
+    min-width: 18.5rem;
     right: 0;
     left: auto !important;
     overflow-x: hidden;

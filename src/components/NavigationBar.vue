@@ -77,8 +77,9 @@ nav a.router-link-exact-active {
 
 @media (max-width: 320px) {
   .navbar-brand {
-    width: 8rem;
-    font-size: 1.8rem;
+    width: 7rem;
+    margin: 5px;
+    font-size: 1.6rem;
   }
   
   .container {

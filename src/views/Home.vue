@@ -54,7 +54,7 @@ container {
 header {
   position: relative;
   max-width: 95vw;
-  height: 10vh;
+  height: 11vh;
   padding: 1rem;
   
   color: whitesmoke;
