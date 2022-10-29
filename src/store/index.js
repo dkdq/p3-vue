@@ -11,7 +11,8 @@ export default new Vuex.Store({
     cart: [],
     notifications: [],
     error: '',
-    isActive: true
+    isActive: true,
+    users: []
   },
   getters: {
     cartItemCount(state) {
@@ -44,6 +45,7 @@ export default new Vuex.Store({
           quantity
         })
       }
+      console.log(productInCart)
     },
     REMOVE_PRODUCT_FROM_CART(state, product) {
       state.cart = state.cart.filter(item => item.product._id !== product._id)
@@ -80,6 +82,9 @@ export default new Vuex.Store({
     },
     IS_ACTIVE(state) {
       state.isActive = !state.isActive;
+    },
+    SET_USERS(state, users) {
+      state.users = users;
     }
   },
   actions: {
@@ -165,6 +170,14 @@ export default new Vuex.Store({
     removeNotification({ commit }, notification) {
       commit('REMOVE_NOTIFICATION', notification);
     },
+    async loadUsers({commit}) {
+      try {
+        let response = await API().get('user')
+        commit('SET_USERS', response.data);
+      } catch (error) {
+        commit('SET_ERROR', error.message)
+      }
+    }
   },
   modules: {
   }

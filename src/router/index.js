@@ -14,7 +14,25 @@ const routes = [
     path: '/admin',
     name: 'admin',
     params: true,
-    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue')
+    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
+    beforeEnter(to, from, next) {
+      let currentUser = JSON.parse(window.localStorage.currentUser)
+      if(currentUser && currentUser.name) {
+        next()
+      } else {
+        next('/')
+      }
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ '@/components/Login.vue')
+  },
+  {
+    path: '/registration',
+    name: 'registration',
+    component: () => import(/* webpackChunkName: "registration" */ '@/components/Registration.vue')
   },
   {
     path: '/product/add',

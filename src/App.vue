@@ -71,7 +71,7 @@ export default {
   transform: var(--transform);
   background: var(--background);
   z-index: var(--z-index);
-  animation: wave 8s ease-in-out infinite alternate
+  /* animation: wave 8s ease-in-out infinite alternate */
 }
 
 @keyframes wave {

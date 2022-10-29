@@ -12,6 +12,8 @@
         <div class="offcanvas-body align-items-center justify-content-evenly justify-content-lg-evenly">
           <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Home</router-link>|
           <router-link to="/admin" @click.native="$refs.offcanvasButton.click()" class="scale">Admin</router-link>
+          <router-link to="/login" @click.native="$refs.offcanvasButton.click()" class="scale">Login</router-link>|
+          <router-link to="/registration" @click.native="$refs.offcanvasButton.click()" class="scale">Register</router-link>
         </div>
       </div>
       
