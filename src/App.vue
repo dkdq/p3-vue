@@ -39,7 +39,7 @@ export default {
   computed: {
     isActive() {
       return this.$store.state.isActive
-    }
+    },
   }
 }
 </script>

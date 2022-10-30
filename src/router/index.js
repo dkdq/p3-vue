@@ -17,12 +17,17 @@ const routes = [
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
     beforeEnter(to, from, next) {
       let currentUser = JSON.parse(window.localStorage.currentUser)
-      if(currentUser && currentUser.name) {
+      if(currentUser) {
         next()
       } else {
         next('/')
       }
     }
+  },
+  {
+    path: '/userlist',
+    name: 'userlist',
+    component: () => import(/* webpackChunkName: "userlist" */ '@/components/UserList.vue')
   },
   {
     path: '/login',

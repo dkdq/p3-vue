@@ -12,7 +12,8 @@ export default new Vuex.Store({
     notifications: [],
     error: '',
     isActive: true,
-    users: []
+    users: [],
+    currentUser: {}
   },
   getters: {
     cartItemCount(state) {
@@ -85,6 +86,14 @@ export default new Vuex.Store({
     },
     SET_USERS(state, users) {
       state.users = users;
+    },
+    LOGOUT_USER(state) {
+      state.currentUser = {}
+      window.localStorage.currentUser = JSON.stringify({});
+    },
+    SET_CURRENT_USER(state, user) {
+      state.currentUser = user
+      window.localStorage.currentUser = JSON.stringify(user);
     }
   },
   actions: {
@@ -174,6 +183,20 @@ export default new Vuex.Store({
       try {
         let response = await API().get('user')
         commit('SET_USERS', response.data);
+
+        let user = JSON.parse(window.localStorage.currentUser)
+        commit('SET_CURRENT_USER', user)
+      } catch (error) {
+        commit('SET_ERROR', error.message)
+      }
+    },
+    logoutUser({commit}) {
+      commit('LOGOUT_USER')
+    },
+    async loginUser({commit}, loginInfo) {
+      try {
+        let response = await API().post('login', loginInfo)
+        commit('SET_CURRENT_USER', response.data)
       } catch (error) {
         commit('SET_ERROR', error.message)
       }

@@ -1,20 +1,33 @@
 <template>
-  <div>
-    <div v-for="user in users">
-        {{user}}
-    </div>
+  <div class="container">
+    <form>
+        <div class="form-floating mb-3 mt-3">
+            <input type="email" class="form-control" v-model="loginInfo.email" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+            </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" v-model="loginInfo.password" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <button class="btn btn-lg btn-success rounded-4 shadow" @click.prevent="loginUser">Login</button>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-    computed: {
-        users() {
-            return this.$store.state.users
+    data() {
+        return {
+            loginInfo: {
+                email: '',
+                password: ''
+            }
         }
     },
-    mounted() {
-        this.$store.dispatch('loadUsers')
+    methods: {
+        loginUser() {
+            this.$store.dispatch('loginUser', this.loginInfo)
+        }
     }
 }
 </script>

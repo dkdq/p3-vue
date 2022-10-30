@@ -12,6 +12,11 @@
         <div class="offcanvas-body align-items-center justify-content-evenly justify-content-lg-evenly">
           <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Home</router-link>|
           <router-link to="/admin" @click.native="$refs.offcanvasButton.click()" class="scale">Admin</router-link>
+          <div v-if="currentUser.username">
+            {{currentUser.username}}
+            <button @click="logoutUser">Log Out</button>
+          </div>
+          <router-link v-else to="/userlist" @click.native="$refs.offcanvasButton.click()" class="scale">User</router-link>|
           <router-link to="/login" @click.native="$refs.offcanvasButton.click()" class="scale">Login</router-link>|
           <router-link to="/registration" @click.native="$refs.offcanvasButton.click()" class="scale">Register</router-link>
         </div>
@@ -44,6 +49,14 @@ export default {
     cartItemCount() {
       return this.$store.getters.cartItemCount;
     },
+    currentUser() {
+      return this.$store.state.currentUser
+    }
+  },
+  methods: {
+    logoutUser() {
+      return this.$store.dispatch('logoutUser')
+    }
   }
 }
 </script>
