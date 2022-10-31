@@ -28,7 +28,6 @@ export default {
   methods: {
     async editProduct(updatedProduct) {
       await this.$store.dispatch('editProduct', updatedProduct);
-      this.$router.push('/admin')
     }
   },
   updated() {

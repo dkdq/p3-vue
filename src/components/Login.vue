@@ -9,7 +9,7 @@
             <input type="password" class="form-control" v-model="loginInfo.password" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
-        <button class="btn btn-lg btn-success rounded-4 shadow" @click.prevent="loginUser">Login</button>
+        <button class="btn btn-lg btn-success rounded-4 shadow skew" @click.prevent="signIn">Login</button>
     </form>
   </div>
 </template>
@@ -25,8 +25,8 @@ export default {
         }
     },
     methods: {
-        loginUser() {
-            this.$store.dispatch('loginUser', this.loginInfo)
+        async signIn() {
+            await this.$store.dispatch('signIn', this.loginInfo)
         }
     }
 }

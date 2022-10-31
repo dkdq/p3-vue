@@ -20,7 +20,6 @@ export default {
   methods: {
     createProduct(product) {
       this.$store.dispatch('createProduct', product);
-      this.$router.push('/admin')
     },
   },
   updated() {

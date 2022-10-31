@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="d-inline">Product List</h1>
         <button class="btn btn-success rounded-4 shadow ms-3 mb-3 skew">
-            <router-link to="/product/add">Add Product</router-link>
+            <router-link :to="{name: 'add'}">Add Product</router-link>
         </button>
         <div v-if="products">
             <div class="row p-2 h5">

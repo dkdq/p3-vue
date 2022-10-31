@@ -11,13 +11,15 @@
 
         <div class="offcanvas-body align-items-center justify-content-evenly justify-content-lg-evenly">
           <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Home</router-link>|
-          <router-link to="/admin" @click.native="$refs.offcanvasButton.click()" class="scale">Admin</router-link>
-          <div v-if="currentUser.username">
+          <div v-if="currentUser">
             {{currentUser.username}}
-            <button @click="logoutUser">Log Out</button>
+            <button @click="logoutUser">
+              <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Log out</router-link>
+            </button>
+            <router-link to="/admin" @click.native="$refs.offcanvasButton.click()" class="scale">Admin</router-link>
           </div>
-          <router-link v-else to="/userlist" @click.native="$refs.offcanvasButton.click()" class="scale">User</router-link>|
-          <router-link to="/login" @click.native="$refs.offcanvasButton.click()" class="scale">Login</router-link>|
+          <!-- <router-link to="/userlist" @click.native="$refs.offcanvasButton.click()" class="scale">User</router-link>| -->
+          <router-link v-else to="/login" @click.native="$refs.offcanvasButton.click()" class="scale">Login</router-link>|
           <router-link to="/registration" @click.native="$refs.offcanvasButton.click()" class="scale">Register</router-link>
         </div>
       </div>
@@ -54,8 +56,9 @@ export default {
     }
   },
   methods: {
-    logoutUser() {
-      return this.$store.dispatch('logoutUser')
+    async logoutUser() {
+      await this.$store.dispatch('logoutUser')
+      await this.$router.push('/')
     }
   }
 }

@@ -1,7 +1,6 @@
 <template>
   <div id="app" :style="[isActive ? backgroundAnimation : '']">
     <NavigationBar />
-    <ErrorMessage />
     <router-view />
     <NotificationList />
   </div>
@@ -10,8 +9,6 @@
 <script>
 import NavigationBar from '@/components/NavigationBar.vue'
 import NotificationList from '@/components/NotificationList.vue'
-import ErrorMessage from '@/components/ErrorMessage.vue'
-
 export default {
   data() {
     return {
@@ -31,7 +28,6 @@ export default {
   components: {
     NavigationBar,
     NotificationList,
-    ErrorMessage
   },
   created() {
     this.$store.dispatch('getProducts')
@@ -40,6 +36,9 @@ export default {
     isActive() {
       return this.$store.state.isActive
     },
+    addNotification() {
+      return this.$store.dispatch('addNotification')
+    }
   }
 }
 </script>

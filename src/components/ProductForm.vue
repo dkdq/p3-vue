@@ -20,21 +20,17 @@
             <div>
               <label class="col-form-label">Type</label>
               <div>
-                <input type="radio" value="in-ear" v-model="product.type" class="col-8 form-check-input"/>
-                <label class="ms-1">in-ear</label>
+                <label><input type="radio" value="in-ear" v-model="product.type" class="col-8 form-check-input"/> in-ear</label>
               </div>
               <div>
-                <input type="radio" value="on-ear" v-model="product.type" class="col-8 form-check-input"/>
-                <label class="ms-1">on-ear</label>
+                <label><input type="radio" value="on-ear" v-model="product.type" class="col-8 form-check-input"/> on-ear</label>
               </div>
               <div>
-                <input type="radio" value="over-ear" v-model="product.type" class="col-8 form-check-input"/>
-                <label class="ms-1">over-ear</label>
+                <label><input type="radio" value="over-ear" v-model="product.type" class="col-8 form-check-input"/> over-ear</label>
               </div>
             </div><br>
             <div class="mt-3">
-              <input type="checkbox" value="true" v-model="product.dustWaterproof" class="form-check-input">
-              <label class="ms-1">Dust&Waterproof</label>
+              <label><input type="checkbox" value="true" v-model="product.dustWaterproof" class="form-check-input"> Dust&Waterproof</label>
             </div>
             <div class="mt-2">
               <label class="col-4 col-md-3 col-form-label">Connector</label>

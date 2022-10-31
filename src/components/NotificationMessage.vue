@@ -1,5 +1,5 @@
 <template>
-    <div :class="'alert-' + notification.type" class="alert alert-dismissible fade show fade-animation skew rounded-4" role="alert">
+    <div :class="'alert-' + notification.type" class="alert alert-dismissible fade show fade-animation rounded-4" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         {{ notification.message }}
     </div>
@@ -16,7 +16,7 @@ export default {
     created() {
         this.timeout = setTimeout(() => {
             this.$store.dispatch('removeNotification', this.notification);
-        }, 5000);
+        }, 12000);
     },
     beforeDestroy() {
         clearTimeout(this.timeout);
@@ -31,7 +31,7 @@ export default {
 
 <style>
 .fade-animation {
-    animation: fade-in .5s ease, fade-out 5s ease;
+    animation: fade-in .5s ease, fade-out 12s ease;
     animation-fill-mode: forwards;
     opacity: 1;
 }
