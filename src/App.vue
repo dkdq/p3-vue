@@ -32,13 +32,16 @@ export default {
   created() {
     this.$store.dispatch('getProducts')
   },
+  mounted() {
+    this.$store.dispatch('loggedIn', localStorage.getItem('loggedIn'))
+  },
   computed: {
     isActive() {
       return this.$store.state.isActive
     },
     addNotification() {
       return this.$store.dispatch('addNotification')
-    }
+    },
   }
 }
 </script>

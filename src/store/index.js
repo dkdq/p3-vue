@@ -2,19 +2,21 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from '@/router'
+import authHeader from '@/auth-header';
 
 Vue.use(Vuex)
+
+let cart = window.localStorage.getItem('cart')
+let currentUser = window.localStorage.getItem('currentUser')
 
 export default new Vuex.Store({
   state: {
     products: [],
     product: null,
-    cart: [],
+    cart: cart ? JSON.parse(cart) : [],
     notifications: [],
     isActive: true,
-    // users: [],
-    currentUser: null,
-    token: null
+    currentUser: currentUser ? JSON.parse(currentUser) : null,
   },
   getters: {
     cartItemCount(state) {
@@ -46,12 +48,16 @@ export default new Vuex.Store({
           quantity
         })
       }
+
+      window.localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     REMOVE_PRODUCT_FROM_CART(state, product) {
       state.cart = state.cart.filter(item => item.product._id !== product._id)
+      window.localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     CLEAR_CART_ITEMS(state) {
       state.cart = []
+      window.localStorage.removeItem('cart')
     },
     PUSH_NOTIFICATION(state, notification) {
       state.notifications.push({
@@ -80,19 +86,15 @@ export default new Vuex.Store({
     IS_ACTIVE(state) {
       state.isActive = !state.isActive;
     },
-    // SET_USERS(state, users) {
-    //   state.users = users;
-    // },
-    LOGOUT_USER(state) {
-      state.currentUser = {}
-      window.localStorage.currentUser = JSON.stringify({});
-    },
     SET_CURRENT_USER(state, user) {
       state.currentUser = user
-      window.localStorage.currentUser = JSON.stringify(user);
+      localStorage.setItem("currentUser", JSON.stringify(user))
+      // window.localStorage.currentUser = JSON.stringify(user);
     },
-    SET_TOKEN(state, token) {
-      state.token = token
+    LOGOUT_USER(state) {
+      state.currentUser = null
+      // localStorage.setItem("currentUser", JSON.stringify({}))
+      localStorage.removeItem("currentUser")
     }
   },
   actions: {
@@ -121,17 +123,14 @@ export default new Vuex.Store({
     },
     async createProduct({commit, dispatch}, product) {
       try {
-        let p = await axios.post('add', {
-          headers: {
-            'Authorization': 'Bearer ' + token
-          }
-        }, product);
-        commit('ADD_PRODUCT', p);
+        let response = await axios.post('add', product, { headers: authHeader() });
+        commit('ADD_PRODUCT', response);
+        dispatch('getProducts');
         dispatch('addNotification', {
           type: 'success',
-          message: `${product.brandModel} added to Product List.`
+          message: `${product.brandModel} has been added to product list`
         });
-        router.push('/admin')
+        router.push('/dashboard')
       } catch (error) {
         dispatch('addNotification', {
           type: 'warning',
@@ -141,14 +140,14 @@ export default new Vuex.Store({
     },
     async editProduct({commit, dispatch}, product) {
       try {
-        let response = await axios.put(`earphone/${product._id}`, product);
+        let response = await axios.put(`earphone/${product._id}`, product, { headers: authHeader() });
         let savedProduct = response.data.result;
         commit('EDIT_PRODUCT', savedProduct);
         dispatch('addNotification', {
           type: 'success',
-          message: `${product.brandModel} edited to Product List.`
+          message: `${product.brandModel} has been edited to product list`
         });
-        router.push('/admin')
+        router.push('/dashboard')
       } catch (error) {
         dispatch('addNotification', {
           type: 'warning',
@@ -158,11 +157,11 @@ export default new Vuex.Store({
     },
     async deleteProduct({commit, dispatch}, product) {
       try {
-        await axios.delete(`earphone/${product._id}`);
+        await axios.delete(`earphone/${product._id}`, { headers: authHeader() });
         commit('DELETE_PRODUCT', product._id);
         dispatch('addNotification', {
           type: 'warning',
-          message: `${product.brandModel} removed from Product List.`
+          message: `${product.brandModel} has been removed from product list`
         });
       } catch (error) {
         dispatch('addNotification', {
@@ -175,21 +174,21 @@ export default new Vuex.Store({
       commit('ADD_TO_CART', { product, quantity });
       dispatch('addNotification', {
         type: 'success',
-        message: `${product.brandModel} added to cart.`
+        message: `${product.brandModel} has been added to cart.`
       });
     },
     removeProductFromCart({commit, dispatch}, product) {
       commit('REMOVE_PRODUCT_FROM_CART', product);
       dispatch('addNotification', {
         type: 'warning',
-        message: `${product.brandModel} removed from cart.`
+        message: `${product.brandModel} has been removed from cart`
       });
     },
     clearCartItems({commit, dispatch}) {
       commit('CLEAR_CART_ITEMS');
       dispatch('addNotification', {
         type: 'warning',
-        message: 'ALL PRODUCTS removed from cart.'
+        message: 'All products have removed from cart.'
       });
     },
     addNotification({ commit }, notification) {
@@ -198,47 +197,50 @@ export default new Vuex.Store({
     removeNotification({ commit }, notification) {
       commit('REMOVE_NOTIFICATION', notification);
     },
-    // async loadUsers({commit}) {
-    //   try {
-    //     let response = await axios.get('user')
-    //     commit('SET_USERS', response.data);
-
-    //     let user = JSON.parse(window.localStorage.currentUser)
-    //     commit('SET_CURRENT_USER', user)
-    //   } catch (error) {
-    //     dispatch('addNotification', {
-    //       type: 'warning',
-    //       message: error.response.data
-    //     });
-    //   }
-    // },
-    logoutUser({commit}) {
-      commit('LOGOUT_USER')
-    },
-    async signIn({commit}, loginInfo) {
+    async signIn({commit, dispatch}, loginInfo) {
       try {
         let response = await axios.post('login', loginInfo)
-        commit('SET_CURRENT_USER', response.data.username)
-        console.log(response.data)
-        commit('SET_TOKEN', response.data.token)
-        // dispatch('attempt', response.data)
+        commit('SET_CURRENT_USER', response.data);
+        dispatch('addNotification', {
+          type: 'success',
+          message: `Thank you for signing in, ${response.data.username}. Have a nice day ahead!`
+        });
+        router.push('/dashboard');
       } catch (error) {
-        dispatch('addNotification', error);
+        console.log(error)
+        dispatch('addNotification', {
+          type: 'warning',
+          message: error.response.data
+        });
       }
     },
-    // async attempt({commit}, token) {
-    //   commit('SET_TOKEN', token)
-    //   try {
-    //     let response = await axios.post('https://tgc-earphone-review-rest-api.herokuapp.com/add', {
-    //       headers: {
-    //         'Authorization': 'Bearer ' + token
-    //       }
-    //     })
-    //     commit('SET_CURRENT_USER', response.data)
-    //   } catch(error) {
-    //     console.log(error)
-    //   }
-    // }
+    signOut({commit, dispatch}) {
+      commit('LOGOUT_USER');
+      dispatch('addNotification', {
+        type: 'warning',
+        message: `You're logged out successfully`
+      });
+      router.push('/');
+    },
+    loggedIn({commit, state}, currentUser) {
+      if(currentUser) commit('SET_CURRENT_USER', currentUser)
+      if(!state.currentUser) return
+    },
+    async signUp({dispatch}, registerInfo) {
+      try {
+        let response = await axios.post('signup', registerInfo)
+        dispatch('addNotification', {
+          type: 'success',
+          message: `Thank you for the registration. ${response.data.message}.`
+        });
+        router.push('/login')
+      } catch (error) {
+        dispatch('addNotification', {
+          type: 'warning',
+          message: error.response.data
+        });
+      }
+    },
   },
   modules: {
   }

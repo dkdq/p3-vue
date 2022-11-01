@@ -8,23 +8,23 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
   },
   {
-    path: '/userlist',
-    name: 'userlist',
-    component: () => import(/* webpackChunkName: "userlist" */ '@/components/UserList.vue')
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "profile" */ '@/views/Profile.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '@/components/Login.vue')
+    component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
   },
   {
-    path: '/admin',
-    name: 'admin',
+    path: '/dashboard',
+    name: 'dashboard',
     params: true,
-    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
+    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
     // beforeEnter(to, from, next) {
     //   let currentUser = JSON.parse(window.localStorage.getItem('currentUser'))
     //   if(currentUser && currentUser.token) {
@@ -37,18 +37,18 @@ const routes = [
   {
     path: '/product/add',
     name: 'add',
-    component: () => import(/* webpackChunkName: "add" */ '@/components/ProductFormAdd.vue')
+    component: () => import(/* webpackChunkName: "add" */ '@/views/ProductFormAdd.vue')
   },
   {
     path: '/product/edit/:id',
     name: 'edit',
     params: true,
-    component: () => import(/* webpackChunkName: "edit" */ '@/components/ProductFormEdit.vue')
+    component: () => import(/* webpackChunkName: "edit" */ '@/views/ProductFormEdit.vue')
   },
   {
     path: '/registration',
     name: 'registration',
-    component: () => import(/* webpackChunkName: "registration" */ '@/components/Registration.vue')
+    component: () => import(/* webpackChunkName: "registration" */ '@/views/Registration.vue')
   },
   {
     path: '/product/:id',

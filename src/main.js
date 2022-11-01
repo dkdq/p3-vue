@@ -8,8 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false
 
-axios.defaults.withCredentials = false;
 axios.defaults.baseURL = 'https://tgc-earphone-review-rest-api.herokuapp.com/';
+
+// store.dispatch('loggedIn', localStorage.getItem('loggedIn'))
 
 new Vue({
   router,

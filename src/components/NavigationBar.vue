@@ -10,21 +10,23 @@
         </div>
 
         <div class="offcanvas-body align-items-center justify-content-evenly justify-content-lg-evenly">
-          <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Home</router-link>|
-          <div v-if="currentUser">
+          <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Home</router-link> | 
+          <div v-if="currentUser != null">
             {{currentUser.username}}
-            <button @click="logoutUser">
-              <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Log out</router-link>
+            <button class="btn rounded-4 shadow skew scale" @click="logout">
+              <router-link to="/" @click.native="$refs.offcanvasButton.click()">Log out</router-link>
             </button>
-            <router-link to="/admin" @click.native="$refs.offcanvasButton.click()" class="scale">Admin</router-link>
+            <router-link to="/dashboard" @click.native="$refs.offcanvasButton.click()">Dashboard</router-link> | 
+            <router-link to="/profile" @click.native="$refs.offcanvasButton.click()">Profile</router-link>
           </div>
-          <!-- <router-link to="/userlist" @click.native="$refs.offcanvasButton.click()" class="scale">User</router-link>| -->
-          <router-link v-else to="/login" @click.native="$refs.offcanvasButton.click()" class="scale">Login</router-link>|
-          <router-link to="/registration" @click.native="$refs.offcanvasButton.click()" class="scale">Register</router-link>
+          <div v-else>
+            <router-link to="/login" @click.native="$refs.offcanvasButton.click()">Login</router-link> | 
+            <router-link to="/registration" @click.native="$refs.offcanvasButton.click()">Register</router-link>
         </div>
       </div>
+      </div>
       
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler skew" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -56,9 +58,8 @@ export default {
     }
   },
   methods: {
-    async logoutUser() {
-      await this.$store.dispatch('logoutUser')
-      await this.$router.push('/')
+    logout() {
+      return this.$store.dispatch('signOut')
     }
   }
 }
@@ -76,6 +77,10 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.offcanvas-body > button {
+  color: #2c3e50;
 }
 
 .dropdown a {
