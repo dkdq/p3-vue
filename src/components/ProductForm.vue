@@ -6,35 +6,35 @@
         <form>
           <div class="form-input mb-3">
             <label class="col-form-label">Brand Model</label>
-            <input type="text" class="form-control" v-model="product.brandModel">
+            <input type="text" class="form-control" v-model="productInfo.brandModel">
           </div>
           <div class="form-input mb-3">
             <label class="col-form-label">Image Link</label>
-            <input type="text" class="form-control" v-model="product.image">
+            <input type="text" class="form-control" v-model="productInfo.image">
           </div>
           <div class="form-input mb-3">
             <label class="col-form-label">Price</label>
-            <input type="number" class="form-control" v-model="product.price">
+            <input type="number" class="form-control" v-model="productInfo.price">
           </div>
           <div class="row">
             <div>
               <label class="col-form-label">Type</label>
               <div>
-                <label><input type="radio" value="in-ear" v-model="product.type" class="col-8 form-check-input"/> in-ear</label>
+                <label><input type="radio" value="in-ear" v-model="productInfo.type" class="col-8 form-check-input"/> in-ear</label>
               </div>
               <div>
-                <label><input type="radio" value="on-ear" v-model="product.type" class="col-8 form-check-input"/> on-ear</label>
+                <label><input type="radio" value="on-ear" v-model="productInfo.type" class="col-8 form-check-input"/> on-ear</label>
               </div>
               <div>
-                <label><input type="radio" value="over-ear" v-model="product.type" class="col-8 form-check-input"/> over-ear</label>
+                <label><input type="radio" value="over-ear" v-model="productInfo.type" class="col-8 form-check-input"/> over-ear</label>
               </div>
             </div><br>
             <div class="mt-3">
-              <label><input type="checkbox" value="true" v-model="product.dustWaterproof" class="form-check-input"> Dust&Waterproof</label>
+              <label><input type="checkbox" value="true" v-model="productInfo.dustWaterproof" class="form-check-input"> Dust&Waterproof</label>
             </div>
             <div class="mt-2">
               <label class="col-4 col-md-3 col-form-label">Connector</label>
-              <select v-model="product.connectors" class="form-select-sm">
+              <select v-model="productInfo.connectors" class="form-select-sm">
                 <option value="">Please select</option>
                 <option value="usb-c">USB-C</option>
                 <option value="micro">MICRO-USB</option>
@@ -42,7 +42,7 @@
             </div>
             <div>
               <label class="col-4 col-md-3 col-form-label">Color</label>
-              <select v-model="product.color" class="form-select-sm" multiple>
+              <select v-model="productInfo.color" class="form-select-sm" multiple>
                   <option disabled>Select one or more</option>
                   <option value="white">White</option>
                   <option value="black">Black</option>
@@ -52,9 +52,10 @@
             </div>
           </div>
           <button @click.prevent="submit" class="btn rounded-4 shadow mb-1 mt-1 skew" :class="buttonClass">{{ buttonText }}</button>
+          <button @click.prevent="cancel" class="btn mb-1 mt-1 ms-1">Cancel</button>
         </form>
       </div>
-      <ProductListProduct :product="product"/>
+      <ProductListProduct :product="productInfo"/>
     </div>
   </div>
 </template>
@@ -65,7 +66,7 @@ export default {
   props: ['buttonText', 'title', 'defaultValues', 'buttonClass'],
   data() {
     return {
-      product: {
+      productInfo: {
         _id: this.defaultValues?._id,
         brandModel: this.defaultValues?.brandModel || '',
         price: this.defaultValues?.price || '',
@@ -83,15 +84,18 @@ export default {
   methods: {
     submit() {
       this.$emit("form-submitted", {
-        _id: this.product._id,
-        brandModel: this.product.brandModel,
-        price: this.product.price,
-        type: this.product.type,
-        image: this.product.image,
-        dustWaterproof: this.product.dustWaterproof,
-        color: this.product.color,
-        connectors: this.product.connectors
+        _id: this.productInfo._id,
+        brandModel: this.productInfo.brandModel,
+        price: this.productInfo.price,
+        type: this.productInfo.type,
+        image: this.productInfo.image,
+        dustWaterproof: this.productInfo.dustWaterproof,
+        color: this.productInfo.color,
+        connectors: this.productInfo.connectors
       });
+    },
+    cancel() {
+      this.$router.push('/dashboard')
     }
   },
   updated() {

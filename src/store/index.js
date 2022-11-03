@@ -241,6 +241,22 @@ export default new Vuex.Store({
         });
       }
     },
+    async editUser({commit, dispatch}, updateInfo) {
+      try {
+        await axios.put(`user/${updateInfo._id}`, updateInfo, { headers: authHeader() });
+        commit('LOGOUT_USER');
+        dispatch('addNotification', {
+          type: 'warning',
+          message: `Please relog for security purpose. Thank you.`
+        });
+        router.push('/login')
+      } catch (error) {
+        dispatch('addNotification', {
+          type: 'warning',
+          message: error.response.data
+        });
+      }
+    },
   },
   modules: {
   }

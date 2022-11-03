@@ -1,23 +1,23 @@
 <template>
   <div>
     <div v-if="isVisible">
-      <div class="modal-mask">
+      <div class="modal-backdrop">
         <div class="modal-wrapper">
-          <div class="modal-container rounded-4 shadow">
-            <div class="modal-header">
-              <h3>Delete Comfirmation</h3>
+          <div class="modal-container rounded-4 shadow p-3">
+            <div class="modal-header p-2">
+              <h4>Delete Comfirmation</h4>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body p-2">
               Are you sure you want to delete?
             </div>
 
-            <div class="modal-footer">
-              <button class="btn btn-primary rounded-4 shadow skew modal-button me-1" @click="$emit('close')">
-                  Cancel
+            <div class="modal-footer p-2">
+              <button class="btn skew modal-button" @click.prevent="submit">
+                OK
               </button>
-              <button class="btn btn-danger rounded-4 shadow skew modal-button" @click.prevent="submit">
-                  OK
+              <button class="btn btn-primary rounded-4 shadow skew modal-button me-1" @click="$emit('close')">
+                Cancel
               </button>
             </div>
           </div>
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style>
-.modal-mask {
+.modal-backdrop {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -56,20 +56,14 @@ export default {
 }
 
 .modal-container {
-  width: 300px;
-  margin: 0px auto;
-  padding: 20px 30px;
+  width: 20rem;
+  margin: 0 auto;
   background-color: whitesmoke;
   animation: fade-in .5s ease;
 }
 
 .modal-header {
-  margin-top: 0;
   color: #bdbdbd;
-}
-
-.modal-body {
-  margin: 20px 0;
 }
 
 .modal-button {

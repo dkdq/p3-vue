@@ -16,7 +16,7 @@ export default {
     created() {
         this.timeout = setTimeout(() => {
             this.$store.dispatch('removeNotification', this.notification);
-        }, 12000);
+        }, 10000);
     },
     beforeDestroy() {
         clearTimeout(this.timeout);
@@ -31,7 +31,7 @@ export default {
 
 <style>
 .fade-animation {
-    animation: fade-in .5s ease, fade-out 12s ease;
+    animation: fade-in .5s ease, fade-out 11s ease;
     animation-fill-mode: forwards;
     opacity: 1;
 }

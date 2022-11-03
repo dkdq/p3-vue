@@ -4,8 +4,8 @@
       <span class="visually-hidden">Loading...</span>
     </div>
     <div v-else class="row mt-2">
-      <div class="col-sm-6 col-lg-5">
-        <img :src="product.image" class="w-100 shadow mb-3" alt="" />
+      <div class="col-sm-6 col-lg-5 img-animation">
+        <img :src="product.image" class="w-100 rounded-4 shadow mb-3" alt="" />
       </div>
       <div class="col-sm-6 col-lg-7">
         <h1>{{ product.brandModel }} <span :style="{color: colorText}">{{ colorText }}</span></h1>
@@ -68,7 +68,12 @@ button {
 }
 
 .spinner-grow {
-  margin: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.img-animation {
+  animation: fade-in .5s ease;
 }
 
 span {

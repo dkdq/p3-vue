@@ -11,14 +11,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
   },
   {
-    path: '/profile',
-    name: 'profile',
-    component: () => import(/* webpackChunkName: "profile" */ '@/views/Profile.vue')
-  },
-  {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
+  },
+  {
+    path: '/registration',
+    name: 'registration',
+    component: () => import(/* webpackChunkName: "registration" */ '@/views/Registration.vue')
   },
   {
     path: '/dashboard',
@@ -46,15 +46,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "edit" */ '@/views/ProductFormEdit.vue')
   },
   {
-    path: '/registration',
-    name: 'registration',
-    component: () => import(/* webpackChunkName: "registration" */ '@/views/Registration.vue')
-  },
-  {
     path: '/product/:id',
     name: 'product',
     props: true,
     component: () => import(/* webpackChunkName: "product" */ '@/views/Product.vue')
+  },
+  {
+    path: '/profile/edit/:id',
+    name: 'profile',
+    params: true,
+    component: () => import(/* webpackChunkName: "profile" */ '@/views/Profile.vue')
   },
   {
     path: '*',

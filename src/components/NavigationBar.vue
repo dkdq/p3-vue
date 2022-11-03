@@ -17,7 +17,7 @@
               <router-link to="/" @click.native="$refs.offcanvasButton.click()">Log out</router-link>
             </button>
             <router-link to="/dashboard" @click.native="$refs.offcanvasButton.click()">Dashboard</router-link> | 
-            <router-link to="/profile" @click.native="$refs.offcanvasButton.click()">Profile</router-link>
+            <router-link :to="{name: 'profile', params: {id: currentUser._id}}" @click.native="$refs.offcanvasButton.click()">Profile</router-link>
           </div>
           <div v-else>
             <router-link to="/login" @click.native="$refs.offcanvasButton.click()">Login</router-link> | 
@@ -44,7 +44,6 @@
 
 <script>
 import MiniCart from '@/components/MiniCart.vue'
-
 export default {
   components: {
     MiniCart
