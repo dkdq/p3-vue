@@ -62,41 +62,41 @@
 <script>
 import ProductListProduct from '@/components/ProductListProduct.vue'
 export default {
-    props: ['buttonText', 'title', 'defaultValues', 'buttonClass'],
-    data() {
-      return {
-        product: {
-          _id: this.defaultValues?._id,
-          brandModel: this.defaultValues?.brandModel || '',
-          price: this.defaultValues?.price || '',
-          type: this.defaultValues?.type || '',
-          image: this.defaultValues?.image || '',
-          dustWaterproof: this.defaultValues?.dustWaterproof || false,
-          color: this.defaultValues?.color || [],
-          connectors: this.defaultValues?.connectors || ''
-        },
-      }
-    },
-    components: {
-        ProductListProduct,
-    },
-    methods: {
-      submit() {
-        this.$emit("form-submitted", {
-          _id: this.product._id,
-          brandModel: this.product.brandModel,
-          price: this.product.price,
-          type: this.product.type,
-          image: this.product.image,
-          dustWaterproof: this.product.dustWaterproof,
-          color: this.product.color,
-          connectors: this.product.connectors
-        });
-      }
-    },
-    updated() {
-      return this.$store.dispatch('getProducts')
+  props: ['buttonText', 'title', 'defaultValues', 'buttonClass'],
+  data() {
+    return {
+      product: {
+        _id: this.defaultValues?._id,
+        brandModel: this.defaultValues?.brandModel || '',
+        price: this.defaultValues?.price || '',
+        type: this.defaultValues?.type || '',
+        image: this.defaultValues?.image || '',
+        dustWaterproof: this.defaultValues?.dustWaterproof || false,
+        color: this.defaultValues?.color || [],
+        connectors: this.defaultValues?.connectors || ''
+      },
     }
+  },
+  components: {
+    ProductListProduct,
+  },
+  methods: {
+    submit() {
+      this.$emit("form-submitted", {
+        _id: this.product._id,
+        brandModel: this.product.brandModel,
+        price: this.product.price,
+        type: this.product.type,
+        image: this.product.image,
+        dustWaterproof: this.product.dustWaterproof,
+        color: this.product.color,
+        connectors: this.product.connectors
+      });
+    }
+  },
+  updated() {
+    return this.$store.dispatch('getProducts')
+  }
 }
 </script>
 

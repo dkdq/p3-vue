@@ -18,8 +18,9 @@
                 <div class="col-4 skew">
                     <button class="btn btn-info rounded-4 shadow"><router-link :to="{name: 'product', params: {id: product._id} }">Show</router-link></button>
                     <button class="btn btn-primary rounded-4 shadow"><router-link :to="{name: 'edit', params: {id: product._id} }">Edit</router-link></button>
-                    <button class="btn btn-danger rounded-4 shadow" @click="deleteProduct(product)">Delete</button>
+                    <button class="btn btn-danger rounded-4 shadow" @click="modalVisible = true">Delete</button>
                 </div>
+                <Modal :product="product" @delete-submitted="deleteProduct(product)" :isVisible="modalVisible" @close="modalVisible = false"/>
             </div>
         </div>
         <div v-else class="spinner-grow text-info" role="status">
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+import Modal from '@/components/Modal.vue'
 export default {
     computed: {
         products() {
@@ -40,13 +42,21 @@ export default {
     },
     methods: {
         deleteProduct(product) {
-            let response = prompt(`Are you sure you want to delete ${product.brandModel}`)
-            if(response) this.$store.dispatch('deleteProduct', product)
-        }
+            this.$store.dispatch('deleteProduct', product)
+            this.modalVisible = false
+        },
     },
     updated() {
         return this.$store.dispatch('getProducts')
-    }
+    },
+    components: {
+        Modal
+    },
+    data() {
+        return {
+            modalVisible: false
+        }
+    },
 }
 </script>
 

@@ -22,8 +22,8 @@
           <div v-else>
             <router-link to="/login" @click.native="$refs.offcanvasButton.click()">Login</router-link> | 
             <router-link to="/registration" @click.native="$refs.offcanvasButton.click()">Register</router-link>
+          </div>
         </div>
-      </div>
       </div>
       
       <button class="navbar-toggler skew" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
