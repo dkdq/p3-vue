@@ -9,19 +9,36 @@
           <button ref="offcanvasButton" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
-        <div class="offcanvas-body align-items-center justify-content-evenly justify-content-lg-evenly">
-          <router-link to="/" @click.native="$refs.offcanvasButton.click()" class="scale">Home</router-link> | 
-          <div v-if="currentUser != null">
-            {{currentUser.username}}
-            <button class="btn rounded-4 shadow skew scale" @click="logout">
-              <router-link to="/" @click.native="$refs.offcanvasButton.click()">Log out</router-link>
-            </button>
-            <router-link to="/dashboard" @click.native="$refs.offcanvasButton.click()">Dashboard</router-link> | 
-            <router-link :to="{name: 'profile', params: {id: currentUser._id}}" @click.native="$refs.offcanvasButton.click()">Profile</router-link>
-          </div>
-          <div v-else>
-            <router-link to="/login" @click.native="$refs.offcanvasButton.click()">Login</router-link> | 
-            <router-link to="/registration" @click.native="$refs.offcanvasButton.click()">Register</router-link>
+        <div class="offcanvas-body">
+          <div class="container text-center">
+            <div class="row row-cols-1 row-cols-md-2 align-items-baseline">
+              <div class="col-md-2">
+                <router-link to="/" @click.native="$refs.offcanvasButton.click()">Home</router-link>
+              </div>
+              <div class="col-md-8">
+                <div v-if="currentUser != null" class="row row-cols-3">
+                  <div class="col-md-4">
+                    <router-link to="/dashboard" @click.native="$refs.offcanvasButton.click()" class="">Dashboard</router-link>
+                  </div>
+                  <div class="col-md-4">
+                    <router-link :to="{name: 'profile', params: {id: currentUser._id}}" @click.native="$refs.offcanvasButton.click()" class=""><i class="bi bi-file-person"></i>{{ currentUser.username | abbreviate }}</router-link>
+                  </div>
+                  <div class="col-md-4" @click="logout">
+                    <router-link to="/" @click.native="$refs.offcanvasButton.click()">Logout</router-link>
+                  </div>
+                </div>
+                <div v-else class="row row-cols-3">
+                  <div class="col">
+                    <router-link to="/login" @click.native="$refs.offcanvasButton.click()" class="">Login</router-link>
+                  </div>
+                  <div class="col">
+                    <router-link to="/registration" @click.native="$refs.offcanvasButton.click()" class="">Register</router-link>
+                  </div>
+                  <div class="col">
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -32,7 +49,7 @@
 
       <div class="dropdown">
         <a class="btn dropdown-toggle rounded-4 shadow scale skew" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{ cartItemCount }} Cart
+          {{ cartItemCount }} <i class="bi bi-cart2"></i>
         </a>
         <div @click="$event.stopPropagation()">
           <MiniCart />
@@ -60,6 +77,15 @@ export default {
     logout() {
       return this.$store.dispatch('signOut')
     }
+  },
+  filters: {
+    abbreviate(title) {
+      if(title.length > 4) {
+        return title && title.slice(0, 4) + '...'
+      } else {
+        return title
+      }
+    }
   }
 }
 </script>
@@ -71,15 +97,15 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #222;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #9a9a9a;
 }
 
 .offcanvas-body > button {
-  color: #2c3e50;
+  color: #222;
 }
 
 .dropdown a {

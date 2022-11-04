@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <UserForm @user-form-submitted="update" :defaultValues="currentUser" :buttonText="btnTitle" :title="pageTitle" />
+    <UserForm @user-form-submitted="update" @delete-submitted="deleteUser" :defaultValues="currentUser" :buttonText="btnTitle" :title="pageTitle" :hasEdit=true />
   </div>
 </template>
 
@@ -19,6 +19,9 @@ export default {
     methods: {
         update(updateInfo) {
             this.$store.dispatch('editUser', updateInfo)
+        },
+        deleteUser(deleteInfo) {
+            
         }
     },
     computed: {

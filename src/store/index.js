@@ -257,6 +257,22 @@ export default new Vuex.Store({
         });
       }
     },
+    async deleteUser({commit, dispatch}, deleteInfo) {
+      try {
+        await axios.delete(`user/${deleteInfo._id}`, deleteInfo, { headers: authHeader() });
+        commit('LOGOUT_USER');
+        dispatch('addNotification', {
+          type: 'warning',
+          message: `Please relog for security purpose. Thank you.`
+        });
+        router.push('/login')
+      } catch (error) {
+        dispatch('addNotification', {
+          type: 'warning',
+          message: error.response.data
+        });
+      }
+    },
   },
   modules: {
   }

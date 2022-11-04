@@ -13,7 +13,7 @@
             </div>
 
             <div class="modal-footer p-2">
-              <button class="btn skew modal-button" @click.prevent="submit">
+              <button class="btn modal-button" @click.prevent="submit">
                 OK
               </button>
               <button class="btn btn-primary rounded-4 shadow skew modal-button me-1" @click="$emit('close')">
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  props: ['product', 'isVisible'],
+  props: ['product', 'isVisible', 'defaultValues'],
   methods: {
     submit() {
       this.$emit("delete-submitted")
@@ -68,5 +68,6 @@ export default {
 
 .modal-button {
   float: right;
+  color: #dbdbdb;
 }
 </style>

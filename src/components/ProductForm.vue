@@ -106,6 +106,6 @@ export default {
 
 <style scoped>
 button {
-  color: whitesmoke !important;
+  color: #dbdbdb;
 }
 </style>

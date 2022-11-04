@@ -20,6 +20,7 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - `HTML5` a markup language used for structuring and presenting content on the World Wide Web
 - ` Cascading Style Sheets 3/CSS3` a style sheet language used to style and layout web pages
 - `Bootstrap 5` a CSS framework directed at responsive, mobile-first front-end web development.
+- `Bootstrap Icons` a icon library which can use with or without Bootstrap.
 - `JavaScript` the programming language for the Web
 - `Vue2.js` a JavaScript framework for building user interfaces
 - `Vue Router` the official library for page navigation in Vue applications
