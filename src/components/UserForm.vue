@@ -27,15 +27,12 @@
             <i v-if="showPassword" class="bi bi-eye"></i>
             <i v-else class="bi bi-eye-slash"></i>
         </button>
-        <button class="btn btn-lg btn-danger rounded-4 shadow skew ms-2" @click="modalVisible = true">Delete</button>
         <button @click.prevent="cancel" class="btn btn-lg mb-1 mt-1 ms-1">Cancel</button>
     </form>
-    <Modal :defaultValues="defaultValues" @delete-submitted="deleteUser(defaultValues)" :isVisible="modalVisible" @close="modalVisible = false"/>
   </div>
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue'
 export default {
     props: ['buttonText', 'title', 'defaultValues', 'hasLogin', 'hasEdit'],
     data() {
@@ -49,7 +46,6 @@ export default {
                 password: this.defaultValues?.password || ''
             },
             showPassword: '',
-            modalVisible: false
         }
     },
     methods: {
@@ -79,15 +75,7 @@ export default {
         cancel() {
             this.$router.push('/dashboard')
         },
-        deleteUser() {
-            this.$emit("delete-submitted", {
-                _id: this.userInfo._id,
-            })
-        }
     },
-    components: {
-        Modal
-    }
 }
 </script>
 

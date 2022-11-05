@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <UserForm @user-form-submitted="update" @delete-submitted="deleteUser" :defaultValues="currentUser" :buttonText="btnTitle" :title="pageTitle" :hasEdit=true />
+    <UserForm @user-form-submitted="update" :defaultValues="currentUser" :buttonText="btnTitle" :title="pageTitle" :hasEdit=true />
+    <Modal @delete-submitted="deleteUser"/>
   </div>
 </template>
 
 <script>
+import Modal from '@/components/Modal.vue'
 import UserForm from '@/components/UserForm.vue'
 export default {
     data() {
@@ -14,14 +16,15 @@ export default {
         }
     },
     components: {
-        UserForm
+        UserForm,
+        Modal
     },
     methods: {
         update(updateInfo) {
             this.$store.dispatch('editUser', updateInfo)
         },
         deleteUser(deleteInfo) {
-            
+            this.$store.dispatch('deleteUser', deleteInfo)
         }
     },
     computed: {

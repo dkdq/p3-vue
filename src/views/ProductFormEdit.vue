@@ -19,7 +19,7 @@ export default {
       return this.$store.state.products
     },
     product() {
-      return this.products.find(p => p._id == this.$route.params.id )
+      return this.products.find(p => p._id == this.$route.params.id)
     }
   },
   components: {

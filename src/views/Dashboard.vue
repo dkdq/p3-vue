@@ -15,12 +15,11 @@
                 <div class="col-4">{{ product.brandModel }}</div>
                 <div class="col-2">{{ product.type }}</div>
                 <div class="col-2">{{ product.price }}</div>
-                <div class="col-4 skew">
-                    <button class="btn btn-info rounded-4 shadow"><router-link :to="{name: 'product', params: {id: product._id} }">Show</router-link></button>
-                    <button class="btn btn-primary rounded-4 shadow"><router-link :to="{name: 'edit', params: {id: product._id} }">Edit</router-link></button>
-                    <button class="btn btn-danger rounded-4 shadow" @click="modalVisible = true">Delete</button>
+                <div class="col-4">
+                    <button class="btn btn-info rounded-4 shadow skew"><router-link :to="{name: 'product', params: {id: product._id} }">Show</router-link></button>
+                    <button class="btn btn-primary rounded-4 shadow skew"><router-link :to="{name: 'edit', params: {id: product._id} }">Edit</router-link></button>
+                    <Modal :product="product" @delete-submitted="deleteProduct(product)" class="d-inline-block"/>
                 </div>
-                <Modal :product="product" @delete-submitted="deleteProduct(product)" :isVisible="modalVisible" @close="modalVisible = false"/>
             </div>
         </div>
         <div v-else class="spinner-grow text-info" role="status">
@@ -37,13 +36,12 @@ export default {
             return this.$store.state.products
         },
         product() {
-            return this.$store.state.product
-        }
+            return this.$store.state.products.find(p => p._id == product._id)
+        },
     },
     methods: {
         deleteProduct(product) {
             this.$store.dispatch('deleteProduct', product)
-            this.modalVisible = false
         },
     },
     updated() {
@@ -51,11 +49,6 @@ export default {
     },
     components: {
         Modal
-    },
-    data() {
-        return {
-            modalVisible: false
-        }
     },
 }
 </script>
@@ -66,7 +59,7 @@ button a {
     text-decoration: none;
 }
 
-.col-4 > button {
+.col-4 > * {
     margin: 2px;
 }
 </style>

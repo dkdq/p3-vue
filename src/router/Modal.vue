@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button class="btn btn-danger rounded-4 shadow skew" @click="toggle">Delete</button>
-    <div v-if="isActive">
+    <button class="btn btn-primary rounded-4 shadow skew" @click="toggle">Delete</button>
+    <div v-show="isActive">
       <div class="modal-backdrop">
         <div class="modal-wrapper">
           <div class="modal-container rounded-4 shadow p-3">
@@ -10,11 +10,11 @@
             </div>
 
             <div class="modal-body p-2">
-              Are you sure you want to delete {{defaultValues?._id}}?
+              Are you sure you want to delete? {{product}}
             </div>
 
             <div class="modal-footer p-2">
-              <button class="btn modal-button rounded-4 skew" @click.prevent="submit">
+              <button class="btn modal-button" @click.prevent="submit">
                 OK
               </button>
               <button class="btn btn-primary rounded-4 shadow skew modal-button me-1" @click.prevent="toggle">
@@ -30,7 +30,8 @@
 
 <script>
 export default {
-  props: ['product', 'defaultValues'],
+  props: ['product', 'isVisible'],
+  // props: ['product'],
   data() {
     return {
       isActive: false
@@ -42,12 +43,7 @@ export default {
     },
     toggle() {
       this.isActive = !this.isActive;
-    },
-    // deleteUser() {
-    //   this.$emit("delete-submitted", {
-    //     _id: this.userInfo._id,
-    //   })
-    // },
+    }
   }
 }
 </script>
@@ -60,7 +56,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.03);
   display: table;
 }
 
