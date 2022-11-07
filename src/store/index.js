@@ -259,13 +259,13 @@ export default new Vuex.Store({
     },
     async deleteUser({commit, dispatch}, deleteInfo) {
       try {
-        await axios.delete(`user/${deleteInfo._id}`, deleteInfo, { headers: authHeader() });
+        await axios.delete(`user/${deleteInfo._id}`, { headers: authHeader() });
         commit('LOGOUT_USER');
         dispatch('addNotification', {
           type: 'warning',
-          message: `Please relog for security purpose. Thank you.`
+          message: `You are most welcome to join us again. See you.`
         });
-        router.push('/login')
+        router.push('/')
       } catch (error) {
         dispatch('addNotification', {
           type: 'warning',

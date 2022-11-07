@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-danger rounded-4 shadow skew" @click="toggle">Delete</button>
+    <button class="btn btn-danger rounded-4 shadow skew" @click="toggle" :class="buttonSize">Delete</button>
     <div v-if="isActive">
       <div class="modal-backdrop">
         <div class="modal-wrapper">
@@ -10,12 +10,18 @@
             </div>
 
             <div class="modal-body p-2">
-              Are you sure you want to delete {{defaultValues?._id}}?
+              <span v-if="product">
+                Are you sure you want to delete {{product.brandModel}}?
+              </span>
+              <span v-if="defaultValues">
+                <strong>Are you sure, {{defaultValues?.username}}?</strong><br>
+                We're sorry to see you go.
+            </span>
             </div>
 
             <div class="modal-footer p-2">
               <button class="btn modal-button rounded-4 skew" @click.prevent="submit">
-                OK
+                Confirm
               </button>
               <button class="btn btn-primary rounded-4 shadow skew modal-button me-1" @click.prevent="toggle">
                 Cancel
@@ -30,25 +36,28 @@
 
 <script>
 export default {
-  props: ['product', 'defaultValues'],
+  props: ['product', 'defaultValues', 'buttonSize'],
   data() {
     return {
-      isActive: false
+      isActive: false,
     }
   },
   methods: {
     submit() {
-      this.$emit("delete-submitted")
+      if(this.product) {
+        this.$emit("delete-submitted", {
+          _id: this.product._id
+        })
+      } else {
+        this.$emit("delete-submitted", {
+          _id: this.defaultValues._id,
+        })
+      }
     },
     toggle() {
       this.isActive = !this.isActive;
     },
-    // deleteUser() {
-    //   this.$emit("delete-submitted", {
-    //     _id: this.userInfo._id,
-    //   })
-    // },
-  }
+  },
 }
 </script>
 

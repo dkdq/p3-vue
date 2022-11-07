@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <UserForm @user-form-submitted="update" :defaultValues="currentUser" :buttonText="btnTitle" :title="pageTitle" :hasEdit=true />
-    <Modal @delete-submitted="deleteUser"/>
+        <Modal @delete-submitted="deleteUser" :defaultValues="currentUser" class="modalProp" :buttonSize="btnSize"/>
+        <UserForm @user-form-submitted="update" :defaultValues="currentUser" :buttonText="btnTitle" :title="pageTitle" :hasEdit=true />
   </div>
 </template>
 
@@ -12,6 +12,7 @@ export default {
     data() {
         return {
             btnTitle: 'Update',
+            btnSize: 'btn-lg',
             pageTitle: 'USER PROFILE',
         }
     },
@@ -35,6 +36,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.modalProp {
+    position: absolute;
+    right: 21px;
+    bottom: 4px;
+}
 </style>

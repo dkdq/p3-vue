@@ -73,7 +73,7 @@ export default {
             }
         },
         cancel() {
-            this.$router.push('/dashboard')
+            this.$router.push('/')
         },
     },
 }
