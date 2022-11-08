@@ -10,29 +10,41 @@
             <input type="text" v-model="search" placeholder="Search by title.." class="form-control"/>
           </div>
           <hr>
-          <section>
-            <h6>COLOR</h6>
-            <div>
-              <!-- <div v-for="(stack,index) in stacks" :key="index" class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" v-model="stack.checked" @change="getfilteredData">
-                <label class="form-check-label">
-                  {{ stack.value }}
-                </label>
-              </div> -->
-              <div v-for="(color, index) in colors" :key="index">
-                <input class="form-check-input" type="checkbox" v-model="colors" @click.prevent="setActive(color)">
-                <label class="form-check-label">
-                  {{ color }}
-                </label>
-              </div>
+          <div>
+            <h6>TYPES</h6>
+            <div v-for="(type, index) in types" :key="index">
+              <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" v-model="checkedTypes" :value="type">
+                {{ type }}
+              </label>
             </div>
-          </section>
+          </div>
+          <hr>
+          <div>
+            <h6>Dust & Waterproof</h6>
+              <label><input type="radio" value="true" v-model="radioDustWaterproof" class="col-8 form-check-input"/> Yes</label>
+              <label><input type="radio" value="false" v-model="radioDustWaterproof" class="col-8 form-check-input ms-1"/> No</label>
+          </div>
+          <hr>
+          <h6>Connector</h6>
+              <select v-model="selectedConnectors" class="form-select">
+                <option :value="null" selected disabled>Select</option>
+                <option v-for="c in categoryFilter" :key="c._id" :value="c._id">{{c.color}}</option>
+              </select>
         </aside>
       </div>
       <div class="col">
         <section class="overflow-auto">
           <div class="col-8-md d-flex flex-wrap justify-content-evenly">
-            <ProductListProduct v-for="product in filteredList" :key="product._id" :product="product" />
+            <div v-if="!categoryFilter">
+              Loading
+            </div>
+            <div v-else-if="!categoryFilter.length">
+              <h2 class="mt-5 skew">
+                No results
+              </h2>
+            </div>
+            <ProductListProduct v-else v-for="product in categoryFilter" :key="product._id" :product="product"/>
           </div>
         </section>
       </div>
@@ -69,51 +81,24 @@ export default {
     filteredList() {
       return this.products.filter(p => p.brandModel.toLowerCase().includes(this.search.toLowerCase()))
     },
-    // filteredList() {
-    //   return this.products.filter( product => {
-    //     return this.filtersAppied.every(filterAppied => {
-    //       if (product.color.includes(filterAppied)) {
-    //         return product.color.includes(filterAppied);
-    //       }
-    //     });
-    //   });
-    // },
+    categoryFilter() {
+      if (this.checkedTypes.length === 0) return this.filteredList;
+      // return this.filteredList.filter(p => this.checkedTypes.includes(p.type));
+      return this.filteredList.filter(p => p.dustWaterproof.includes(this.radioDustWaterproof))
+    }
   },
   methods: {
     toggle() {
       this.$store.commit('IS_ACTIVE')
     },
-    setActive(element) {
-      if(this.filtersAppied.indexOf(element) > -1){
-        this.filtersAppied.pop(element)
-      }else{
-        this.filtersAppied.push(element)
-      }
-    },
   },
   data() {
     return {
       search: '',
-      // stacks: [
-      //   {
-      //     checked: false,
-      //     value: 'white'
-      //   },
-      //   {
-      //     checked: false,
-      //     value: 'black'
-      //   },
-      //   {
-      //     checked: false,
-      //     value: 'blue'
-      //     },
-      //   {
-      //     checked: false,
-      //     value: 'red'
-      //   },
-      // ]
-      colors: ['white', 'black', 'red', 'blue'],
-      filtersAppied: [],
+      types: ['in-ear', 'on-ear', 'over-ear'], 
+      checkedTypes: [] ,
+      radioDustWaterproof: '',
+      selectedConnectors: ''
     }
   }
 }

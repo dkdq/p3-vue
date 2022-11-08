@@ -12,7 +12,7 @@
         <div class="offcanvas-body">
           <div class="container text-center">
             <div class="row row-cols-1 row-cols-md-2 align-items-baseline">
-              <div class="col-md-2">
+              <div class="col-md-2 me-4">
                 <router-link to="/" @click.native="$refs.offcanvasButton.click()">Home</router-link>
               </div>
               <div class="col-md-8">
