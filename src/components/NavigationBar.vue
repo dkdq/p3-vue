@@ -12,16 +12,16 @@
         <div class="offcanvas-body">
           <div class="container text-center">
             <div class="row row-cols-1 row-cols-md-2 align-items-baseline">
-              <div class="col-md-2 me-4">
+              <div class="col-md-2 me-2">
                 <router-link to="/" @click.native="$refs.offcanvasButton.click()">Home</router-link>
               </div>
               <div class="col-md-8">
                 <div v-if="currentUser != null" class="row row-cols-3">
                   <div class="col-md-4">
-                    <router-link to="/dashboard" @click.native="$refs.offcanvasButton.click()" class="">Dashboard</router-link>
+                    <router-link to="/dashboard" @click.native="$refs.offcanvasButton.click()">Dashboard</router-link>
                   </div>
                   <div class="col-md-4">
-                    <router-link :to="{name: 'profile', params: {id: currentUser._id}}" @click.native="$refs.offcanvasButton.click()" class=""><i class="bi bi-file-person"></i>{{ currentUser.username | abbreviate }}</router-link>
+                    <router-link :to="{name: 'profile', params: {id: currentUser._id}}" @click.native="$refs.offcanvasButton.click()"><i class="bi bi-file-person"></i>{{ currentUser.username | abbreviate }}</router-link>
                   </div>
                   <div class="col-md-4" @click="logout">
                     <router-link to="/" @click.native="$refs.offcanvasButton.click()">Logout</router-link>
@@ -29,12 +29,13 @@
                 </div>
                 <div v-else class="row row-cols-3">
                   <div class="col">
-                    <router-link to="/login" @click.native="$refs.offcanvasButton.click()" class="">Login</router-link>
+                    <router-link to="/login" @click.native="$refs.offcanvasButton.click()">Login</router-link>
                   </div>
                   <div class="col">
-                    <router-link to="/registration" @click.native="$refs.offcanvasButton.click()" class="">Register</router-link>
+                    <router-link to="/registration" @click.native="$refs.offcanvasButton.click()">Register</router-link>
                   </div>
                   <div class="col">
+                    tbc
                   </div>
                 </div>
               </div>

@@ -39,7 +39,7 @@ export default {
 <style scoped>
 .modalProp {
     position: absolute;
-    right: 21px;
+    right: 6%;
     bottom: 4px;
 }
 </style>

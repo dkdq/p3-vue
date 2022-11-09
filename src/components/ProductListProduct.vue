@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-3 col-lg-2 m-2 card-animation">
+    <div class="col-5 col-sm-3 col-lg-2 m-2 card-animation">
         <div class="card h-100 shadow text-start border-light scale">
             <img :src="product.image">
             <div class="card-body">

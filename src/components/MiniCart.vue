@@ -3,7 +3,7 @@
         <div v-for="item in cart" :key="item.product._id">
             <div class="px-2 grid">
                 <div>
-                    <img :src="item.product.image" class="cartImage" alt="">
+                    <img :src="item.product.image" class="cartImage">
                 </div>
                 <div>
                     <strong>{{ item.product.brandModel }}</strong>
