@@ -7,7 +7,7 @@
                 </div>
                 <div>
                     <strong>{{ item.product.brandModel }}</strong>
-                    <br /> ${{ item.product.price }} X {{ item.quantity }}
+                    <br/> ${{ item.product.price }} X {{ item.quantity }}
                 </div>
                 <div>
                     <a href="#" @click.prevent="removeProductFromCart(item.product)">remove</a>

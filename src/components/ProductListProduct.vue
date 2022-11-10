@@ -1,7 +1,7 @@
 <template>
     <div class="col-5 col-sm-3 col-lg-2 m-2 card-animation">
-        <div class="card h-100 shadow text-start border-light scale">
-            <img :src="product.image">
+        <div class="card h-100 text-start shadow rounded-4 border-light scale">
+            <img :src="product.image" class="rounded-4">
             <div class="card-body">
                 <h4 class="card-title">
                     <router-link :to="{name: 'product', params: {id: product._id} }">{{ product.brandModel | abbreviate }}</router-link>

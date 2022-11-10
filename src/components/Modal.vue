@@ -4,7 +4,7 @@
     <div v-if="isActive">
       <div class="modal-backdrop">
         <div class="modal-wrapper">
-          <div class="modal-container rounded-4 shadow p-3">
+          <div class="modal-container rounded-4 p-3">
             <div class="modal-header p-2">
               <h4>Delete Comfirmation</h4>
             </div>
@@ -69,7 +69,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
   display: table;
 }
 
@@ -81,6 +81,7 @@ export default {
 .modal-container {
   width: 20rem;
   margin: 0 auto;
+  box-shadow: 5px 10px 5px #222;
   background-color: whitesmoke;
   animation: fade-in .5s ease;
 }
