@@ -4,7 +4,7 @@
     <!-- -----Banner----- -->
     <div class="row">
       <div class="col-md-4 p-3">
-        <h2>Our Products News</h2>
+        <h2 class="pb-2">Product News</h2>
         <aside class="accordion shadow" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -38,7 +38,7 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                Come on something new please? Try <strong>SHOKZ S803MBK OpenRun Mini Bone Conduction Sport</strong>
+                Come on, something new please? Try <strong>SHOKZ S803MBK OpenRun Mini Bone Conduction Sport</strong>
               </div>
             </div>
           </div>
@@ -54,10 +54,10 @@
           </div>
           <div class="carousel-inner rounded-4">
             <div class="carousel-item active" data-bs-interval="4000">
-              <img src="@/assets/leisure.jpg">
+              <img src="@/assets/transports.jpeg">
               <div class="carousel-caption">
-                <h5>Enjoy on me time</h5>
-                <p>Music is always my best relaxation technique on all time.</p>
+                <h5>Kill time on travel</h5>
+                <p>Music or videos always my great companion on any transports.</p>
               </div>
             </div>
             <div class="carousel-item" data-bs-interval="4000">
@@ -70,15 +70,15 @@
             <div class="carousel-item" data-bs-interval="4000">
               <img src="@/assets/work.webp" style="filter: brightness(90%)">
               <div class="carousel-caption">
-                <h5>Make our work great</h5>
+                <h5>Make our works great</h5>
                 <p>We alwasy can make the difference from others. No doubt!</p>
               </div>
             </div>
             <div class="carousel-item" data-bs-interval="4000">
-              <img src="@/assets/transports.jpeg">
+              <img src="@/assets/leisure.jpg">
               <div class="carousel-caption">
-                <h5>Kill time on travel</h5>
-                <p>Music or videos always my great companion on any transports.</p>
+                <h5>Enjoy on me time</h5>
+                <p>Music is always my best relaxation technique on all time.</p>
               </div>
             </div>
           </div>
@@ -272,11 +272,14 @@ img {
 }
 
 .carousel-inner {
-  /* box-shadow: 1px 1px 5px 1px #222; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .bi-toggles2 {
   cursor: pointer;
+}
+
+.carousel {
+  z-index: 0;
 }
 </style>

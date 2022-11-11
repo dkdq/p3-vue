@@ -73,7 +73,11 @@ export default {
             }
         },
         cancel() {
-            this.$router.push('/')
+            if(!this.hasEdit) {
+                this.$router.push('/')
+            } else {
+                this.$router.push('/admin')
+            }
         },
     },
 }

@@ -16,7 +16,7 @@
         <hr />
         </div>
         <div class="d-flex justify-content-between">
-            <button v-if="cart.length" class="btn rounded-4 skew">Checkout (${{ cartTotalPrice }})</button>
+            <button v-if="cart.length" class="btn rounded-4 skew" @click="checkout">Checkout (${{ cartTotalPrice }})</button>
             <a :class="{disabled: cart.length === 0 }" href="#" @click.prevent="clearCartItems()" class="me-2">clear cart</a>
         </div>
     </div>
@@ -30,6 +30,9 @@ export default {
         },
         cartTotalPrice() {
             return this.$store.getters.cartTotalPrice
+        },
+        currentUser() {
+            return this.$store.state.currentUser
         }
     },
     methods: {
@@ -39,6 +42,15 @@ export default {
         clearCartItems() {
             this.$store.dispatch('clearCartItems')
         },
+        checkout() {
+            if(!this.currentUser) {
+                this.$router.push('/login');
+                this.$store.dispatch('addNotification', {
+                    type: 'warning',
+                    message: `Please login to checkout.`
+                });
+            }
+        }
     }
 }
 </script>

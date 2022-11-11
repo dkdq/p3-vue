@@ -10,8 +10,6 @@ Vue.config.productionTip = false
 
 axios.defaults.baseURL = 'https://tgc-earphone-review-rest-api.herokuapp.com/';
 
-// store.dispatch('loggedIn', localStorage.getItem('loggedIn'))
-
 new Vue({
   router,
   store,

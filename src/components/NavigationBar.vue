@@ -17,8 +17,8 @@
               </div>
               <div class="col-md-8">
                 <div v-if="currentUser != null" class="row row-cols-3">
-                  <div class="col-md-4">
-                    <router-link to="/dashboard" @click.native="$refs.offcanvasButton.click()">Dashboard</router-link>
+                  <div class="col-md-4" @click="verify">
+                    <router-link to="/admin" @click.native="$refs.offcanvasButton.click()">Admin</router-link>
                   </div>
                   <div class="col-md-4">
                     <router-link :to="{name: 'profile', params: {id: currentUser._id}}" @click.native="$refs.offcanvasButton.click()"><i class="bi bi-file-person"></i>{{ currentUser.username | abbreviate }}</router-link>
@@ -77,6 +77,14 @@ export default {
   methods: {
     logout() {
       return this.$store.dispatch('signOut')
+    },
+    verify() {
+      if(this.currentUser.email !== 'admin@admin.com') {
+        this.$store.dispatch('addNotification', {
+          type: 'warning',
+          message: `Sorry, admin user only`
+        });
+      }
     }
   },
   filters: {
@@ -101,7 +109,7 @@ nav a {
   color: #222;
 }
 
-nav a.router-link-exact-active {
+a.router-link-exact-active {
   color: #9a9a9a;
 }
 

@@ -21,10 +21,11 @@
         </div>
 
         <div><i class="bi bi-ear"></i>{{ product.type }}</div>
+        <div><i class="bi bi-earbuds" :style="[product.earbuds ? { color: 'olive' } : {color: '#dbdbdb', opacity: 0.1}]"></i>{{ condition }}</div>
         <div><i class="bi bi-battery-charging"></i> {{ product.connectors }}</div>
 
-        <div v-if="product.dustWaterproof == true"><i class="bi bi-shield-check"></i>Dust & Waterproof</div>
-        <div v-else><i class="bi bi-shield-x"></i>Dust & Waterproof</div>
+        <div v-if="product.dustWaterproof == true"><i class="bi bi-shield-check"></i>dust & waterproof</div>
+        <div v-else><i class="bi bi-shield-x"></i>dust & waterproof</div>
       </div>
     </div>
   </div>
@@ -37,13 +38,16 @@ export default {
     return {
       quantity: 1,
       colorCircle: '',
-      colorText: ''
+      colorText: '',
     };
   },
   computed: {
     product() {
       return this.$store.state.product;
     },
+    condition() {
+      return this.product.earbuds ? 'earbuds included' : 'no earbuds'
+    }
   },
   created() {
     this.$store.dispatch("getProduct", this.id);
@@ -57,7 +61,7 @@ export default {
     },
     selectedColor(index) {
       this.colorText = this.product.color[index]
-    }
+    },
   },
 };
 </script>

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "@vue-stripe/vue-stripe": "^4.4.4",
     "@vue/cli": "^5.0.8",
     "axios": "^1.0.0",
     "bootstrap": "^5.2.2",

@@ -21,18 +21,23 @@ const routes = [
     component: () => import(/* webpackChunkName: "registration" */ '@/views/Registration.vue')
   },
   {
-    path: '/dashboard',
-    name: 'dashboard',
+    path: '/checkout',
+    name: 'checkout',
+    component: () => import(/* webpackChunkName: "checkout" */ '@/views/CheckOut.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
     params: true,
-    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
-    // beforeEnter(to, from, next) {
-    //   let currentUser = JSON.parse(window.localStorage.getItem('currentUser'))
-    //   if(currentUser && currentUser.token) {
-    //     next()
-    //   } else {
-    //     next('/')
-    //   }
-    // },
+    component: () => import(/* webpackChunkName: "admin" */ '@/views/Admin.vue'),
+    beforeEnter(to, from, next) {
+      let currentUser = JSON.parse(window.localStorage.getItem('currentUser'))
+      if(currentUser && currentUser.token && currentUser.email === 'admin@admin.com') {
+        next()
+      } else {
+        next('/')
+      }
+    },
   },
   {
     path: '/product/add',

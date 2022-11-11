@@ -130,7 +130,7 @@ export default new Vuex.Store({
           type: 'success',
           message: `${product.brandModel} has been added to product list`
         });
-        router.push('/dashboard')
+        router.push('/admin')
       } catch (error) {
         dispatch('addNotification', {
           type: 'warning',
@@ -147,7 +147,7 @@ export default new Vuex.Store({
           type: 'success',
           message: `${product.brandModel} has been edited to product list`
         });
-        router.push('/dashboard')
+        router.push('/admin')
       } catch (error) {
         dispatch('addNotification', {
           type: 'warning',
@@ -205,7 +205,7 @@ export default new Vuex.Store({
           type: 'success',
           message: `Thank you for signing in, ${response.data.username}. Have a nice day ahead!`
         });
-        router.push('/dashboard');
+        router.push('/admin');
       } catch (error) {
         console.log(error)
         dispatch('addNotification', {
