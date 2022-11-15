@@ -1,10 +1,9 @@
 # TGCProject3 - Vue2 Earphone App
 
 ## Intro
-This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api "https://github.com/dkdq/p2-product-reviews-rest-api"). This app is designed to be multipurpose such as e-commerce and admin management system.
-It was created using HTML5, CSS3, JavaScript, Vue2.js, and hosted on Github.
+This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api "https://github.com/dkdq/p2-product-reviews-rest-api"). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, and hosted on Github.
 
-User are able to search, read, edit, delete the earphone post with login authentication (email and password). Although our server is built encryption system to hash all the users' password, please don't use any online banking related password. 
+User are able to search, read, edit, delete the earphone post with login authentication (email and password). Although our server is built with password encryption system to hash all the users' password, please don't use any online banking related password. 
 
 ## Context
 Bluetooth earphones are growing popular nowadays. Most people own at least one as their daily commuter companion to embrace themselves with their favorite music/drama/video/calls/etc or just to give themselves a peaceful noise reduced environment.
@@ -18,7 +17,7 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 ## Tech used
 **Frontend**
 - `HTML5` a markup language used for structuring and presenting content on the World Wide Web
-- ` Cascading Style Sheets 3/CSS3` a style sheet language used to style and layout web pages
+- `Cascading Style Sheets 3/CSS3` a style sheet language used to style and layout web pages
 - `Bootstrap5` a CSS framework directed at responsive, mobile-first front-end web development.
 - `Bootstrap Icons` a icon library which can use with or without Bootstrap.
 - `JavaScript` the programming language for the Web
@@ -68,13 +67,81 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - API calls + JWT Authentication
 
 **Data Binding**
-- attribute: MiniCart,
-- class: MiniCart, Modal
-- style: 
+- attribute: MiniCart, ProductListProduct
+- class: MiniCart, Modal, NotificationMessage, ProductForm
+- style: App, Product
 
-**Others**
-- $ref: NavigationBar
-- click:
+## Key Features
+**Frontend**
+Features | Description
+ --- | --- 
+Registration, Login, Logout |  Users can register, login, and logout for an account
+Account management | Users can edit and delete account
+Search product(s) | Users can search the details of product
+Manual add-on quantity | Users can type in quantity in product page
+Cart management | Users can view their order with product title, price, quantity, and total price. Users can remove product or remove all.
+
+**Backend**
+Features | Description
+ --- | --- 
+Registration, Login, Logout |  Only admin and staffs can access the admin panel
+Manage products | Create, read, update and delete product
+
+**Manual Testing**
+Test Case # | Description | Test Steps | Expected Result | Actual Result
+ --- | --- | --- | --- | ---
+**Home** |||
+1 | Load website | Access URL | Navigation bar, main section(accordian, carousel, and product card list), and footer showed | Expected
+2 | Search product(s) | Type in any alphanumeric | Related product(s) showed | Expected
+3 | Search product(s) | Click any checkboxes of type | Related product(s) showed | Expected
+4 | Search product(s) | Pick one radio button of earbuds | Related product(s) showed | Expected
+5 | Search product(s) | Select dropdown menu of connectors | Related product(s) showed | Expected
+6 | Search product(s) | Combine multiple or all filters | Related product(s) showed | Expected
+7 | Search product(s) | No result | Message "No Data Found!" showed | Expected
+8 | Reset search | Click reset | All products showed | Expected
+9 | View product page | Click product title | Requested Product page showed | Expected
+**Cart** |||
+1 | Add to cart | Click "add to cart" button | Cart added and notification showed | Expected
+2 | Key in quantity to cart | Numeric only input for user and press enter or click "add to cart" button in product page | Item added and notification showed | Expected
+3 | View empty cart | Click cart button in navigation bar | Empty dropdown with clear cart button showed | Expected
+4 | View item(s) cart | Click cart button in navigation bar | Scrollable dropdown with both checkout and clear cart button showed | Expected
+5 | Remove an item in cart | Click remove button | Item removed and notification showed | Expected
+6 | Remove all items in cart | Click clear cart button | All items removed, checkout button disappeard, and notification showed | Expected
+7 | Total price | Add item(s) | Generated total price of whole cart item | Expected
+8 | Checkout | Click checkout button | Guest is redirect to Login page | Expected
+9 | Checkout | Click checkout button | Logged user no redirect to Login page | Expected
+**User** ||| 
+1 | Valid login | Click login link(navigation bar) to redirect to login page then enter email and password | User redirect to home page and welcome notification showed | Expected
+2 | Invalid login | Follow step 1 and enter non-exist or wrong formatted email or password | Validation notification showed | Expected
+3 | Cancel login | Click cancel button | User redirect to Home page | Expected
+4 | Toggle password | Click eye toggle button | Password shown betwen alphanumeric and dotted | Expected
+5 | Access Admin page | Click admin button | Notification showed and redirect to Home page | Expected
+6 | Logout | Click logout button | User redirect to Home page | Expected
+7 | View user info | Click username link with profile icon | User redirect to Profile page | Expected
+8 | Valid edit user info | Follow step 7 and enter new data then click update | User logged out, redirect to login page, and safety notification showed | Expected
+9 | Invalid edit user info | Follow step 8 | Validation notification showed | Expected
+10 | Pre-delete user | Follow step 7 and click delete button | Modal shown to recomfirm with user | Expected
+11 | Post-delete user | Follow step 9 | User redirect to Home page and notification showed | Expected
+**Admin** |||
+1 | Valid login | Click login link(navigation bar) to redirect to Login page then enter email and password | User redirect to Admin page and welcome notification showed | Expected
+2 | Navigate to Product page | Click show button | Redirect to specific Product page | Expected
+3 | Navigate to "add product" page | Click "add product" | Admin redirect to ProductFormAdd page | Expected
+4 | Valid add product | Follow step 1 and enter new data | Redirect to Admin page with new added product info and notification showed | Expected
+5 | Invalid add product | Follow step 1 and enter new data | Validation notification showed | Expected
+6 | Valid edit product | Follow step 1, click edit button, and enter new data | Redirect to Admin page and notification showed
+7 | Invalid edit product | Follow step 1, click edit button, and enter new data | Validation notification showed | Expected
+8 | Pre-delete product | Follow step 1 and click delete button | Modal shown to recomfirm with user | Expected
+9 | Post-delete product | Follow step 1 | User redirect to Admin page and notification showed | Expected
+10 | View admin info | Click username link with profile icon | Admin redirect to Profile page with no delete button | Expected
+11 | Valid edit admin info | Follow step 10 and enter new data then click update | Admin logged out, redirect to login page, and safety notification showed | Expected
+12 | Invalid edit admin info | Follow step 10 | Validation notification showed | Expected
+13 | Cancel edit admin info | Click cancel button | User redirect to Admin page | Expected
+
+## UIUX
+**1. Strategy**
+- To establish an e-commerce store selling a wide variety of earphone categories, price, and brands ranging from local to international.
+- Reach out to mobile, tablet, and laptop users.
+- 
 
 ## Credits
 - Trent Global College & Tutor Paul [Link](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/)

@@ -47,9 +47,10 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css?family=Exo+2');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 #app {
   background-color: linear-gradient(rgb(67, 124, 205), rgb(69, 214, 202)) !important;
@@ -73,7 +74,7 @@ export default {
   transform: var(--transform);
   background: var(--background);
   z-index: var(--z-index);
-  /* animation: wave 8s ease-in-out infinite alternate */
+  animation: wave 8s ease-in-out infinite alternate
 }
 
 @keyframes wave {
@@ -84,11 +85,5 @@ export default {
   100% {
     transform: translateX(-30%) skew(8deg, -4deg);
   }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-        <Modal @delete-submitted="deleteUser" :defaultValues="currentUser" class="modalProp" :buttonSize="btnSize"/>
+        <Modal v-if="currentUser.email !== 'admin@admin.com'" @delete-submitted="deleteUser" :defaultValues="currentUser" class="modalProp" :buttonSize="btnSize"/>
         <UserForm @user-form-submitted="update" :defaultValues="currentUser" :buttonText="btnTitle" :title="pageTitle" :hasEdit=true />
   </div>
 </template>
