@@ -1,7 +1,7 @@
 # TGCProject3 - Vue2 Earphone App
 
 ## Intro
-This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api "https://github.com/dkdq/p2-product-reviews-rest-api"). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, and hosted on Github.
+This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api "https://github.com/dkdq/p2-product-reviews-rest-api"). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, Bootstrap5 and hosted on Netlify [link](https://chipper-sable-08dc10.netlify.app/ "p3-vue").
 
 User are able to search, read, edit, delete the earphone post with login authentication (email and password). Although our server is built with password encryption system to hash all the users' password, please don't use any online banking related password. 
 
@@ -18,8 +18,8 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 **Frontend**
 - `HTML5` a markup language used for structuring and presenting content on the World Wide Web
 - `Cascading Style Sheets 3/CSS3` a style sheet language used to style and layout web pages
-- `Bootstrap5` a CSS framework directed at responsive, mobile-first front-end web development.
-- `Bootstrap Icons` a icon library which can use with or without Bootstrap.
+- `Bootstrap5` a CSS framework directed at responsive, mobile-first front-end web development
+- `Bootstrap Icons` a icon library which can use with or without Bootstrap
 - `JavaScript` the programming language for the Web
 - `Vue2.js` a JavaScript framework for building user interfaces
 - `Vue Router` the official library for page navigation in Vue applications
@@ -27,8 +27,10 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - `Axios` a library used to send asynchronous HTTP requests to REST endpoints
 
 **Platform and Software**
+- `Git` a distributed version control system designed to handle coordinating work among programmers collaboratively developing source code during software development
 - `Github` an Internet hosting service for software development and version control using Git
-- `Gitpod` a platform for remote software development
+- `Gitpod` a platform for remote software development and embedded Git
+- `Visual Studio Code/VS Code` a source-code editor and embedded Git
 
 ## Vue2.js in-depth
 **Views/Routes**
@@ -90,7 +92,7 @@ Manage products | Create, read, update and delete product
 **Manual Testing**
 Test Case # | Description | Test Steps | Expected Result | Actual Result
  --- | --- | --- | --- | ---
-**Home** |||
+**Home**
 1 | Load website | Access URL | Navigation bar, main section(accordian, carousel, and product card list), and footer showed | Expected
 2 | Search product(s) | Type in any alphanumeric | Related product(s) showed | Expected
 3 | Search product(s) | Click any checkboxes of type | Related product(s) showed | Expected
@@ -100,7 +102,7 @@ Test Case # | Description | Test Steps | Expected Result | Actual Result
 7 | Search product(s) | No result | Message "No Data Found!" showed | Expected
 8 | Reset search | Click reset | All products showed | Expected
 9 | View product page | Click product title | Requested Product page showed | Expected
-**Cart** |||
+**Cart**
 1 | Add to cart | Click "add to cart" button | Cart added and notification showed | Expected
 2 | Key in quantity to cart | Numeric only input for user and press enter or click "add to cart" button in product page | Item added and notification showed | Expected
 3 | View empty cart | Click cart button in navigation bar | Empty dropdown with clear cart button showed | Expected
@@ -110,19 +112,19 @@ Test Case # | Description | Test Steps | Expected Result | Actual Result
 7 | Total price | Add item(s) | Generated total price of whole cart item | Expected
 8 | Checkout | Click checkout button | Guest is redirect to Login page | Expected
 9 | Checkout | Click checkout button | Logged user no redirect to Login page | Expected
-**User** ||| 
+**User**
 1 | Valid login | Click login link(navigation bar) to redirect to login page then enter email and password | User redirect to home page and welcome notification showed | Expected
 2 | Invalid login | Follow step 1 and enter non-exist or wrong formatted email or password | Validation notification showed | Expected
 3 | Cancel login | Click cancel button | User redirect to Home page | Expected
 4 | Toggle password | Click eye toggle button | Password shown betwen alphanumeric and dotted | Expected
-5 | Access Admin page | Click admin button | Notification showed and redirect to Home page | Expected
+5 | Access Admin page | Click admin link | Notification showed and redirect to Home page | Expected
 6 | Logout | Click logout button | User redirect to Home page | Expected
 7 | View user info | Click username link with profile icon | User redirect to Profile page | Expected
 8 | Valid edit user info | Follow step 7 and enter new data then click update | User logged out, redirect to login page, and safety notification showed | Expected
 9 | Invalid edit user info | Follow step 8 | Validation notification showed | Expected
 10 | Pre-delete user | Follow step 7 and click delete button | Modal shown to recomfirm with user | Expected
 11 | Post-delete user | Follow step 9 | User redirect to Home page and notification showed | Expected
-**Admin** |||
+**Admin**
 1 | Valid login | Click login link(navigation bar) to redirect to Login page then enter email and password | User redirect to Admin page and welcome notification showed | Expected
 2 | Navigate to Product page | Click show button | Redirect to specific Product page | Expected
 3 | Navigate to "add product" page | Click "add product" | Admin redirect to ProductFormAdd page | Expected
@@ -140,8 +142,39 @@ Test Case # | Description | Test Steps | Expected Result | Actual Result
 ## UIUX
 **1. Strategy**
 - To establish an e-commerce store selling a wide variety of earphone categories, price, and brands ranging from local to international.
-- Reach out to mobile, tablet, and laptop users.
-- 
+- Reach out to mobile, tablet, and laptop users for access anytime.
+- Good ranking in SEO search
+
+**2. Scope**
+- Functional requirements: Feeback to every user action with notifications
+- Content requirements: Imagery and text for product
+
+**3. Struture**
+- Navigation bar is linking to user related
+- Product card is linking to product related
+- Product card filtering
+- Cart is linking to price and quantity related
+
+**4. Skeleton**
+- Interface design: Background animation and password toggle
+- Navigation design: Global navigation bar
+- Information design: Accordian for news(text), carousel for user experiences(imagery and text), product cards listing for content(imagery and text)
+
+**5. Surface**
+- Typography: technological/futuristic
+- Tones:
+    - ![#222](https://placehold.co/15x15/222/222.png) *#222*
+    - ![olive](https://placehold.co/15x15/olive/olive.png) *Olive*
+    - ![red](https://placehold.co/15x15/red/red.png) *Red*
+    - ![rgb(67, 124, 205)](https://placehold.co/15x15/437CCD/437CCD.png) *rgb(67, 124, 205)*
+    - ![rgb(69, 214, 202)](https://placehold.co/15x15/45D6CA/45D6CA.png) *rgb(69, 214, 202)*
+    - ![#9a9a9a](https://placehold.co/15x15/9a9a9a/9a9a9a.png) *#9a9a9a*
+    - ![#bdbdbd](https://placehold.co/15x15/bdbdbd/bdbdbd.png) *#bdbdbd*
+    - ![#dbdbdb](https://placehold.co/15x15/dbdbdb/dbdbdb.png) *#dbdbdb*
+    - ![whitesmoke](https://placehold.co/15x15/whitesmoke/whitesmoke.png) *Whitesmoke*
+- Style:
+    - Box 2d manipulation
+    - Animation(logo, card, modal, images, icons, buttons)
 
 ## Credits
 - Trent Global College & Tutor Paul [Link](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/)
