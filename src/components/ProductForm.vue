@@ -63,7 +63,7 @@
 <script>
 import ProductListProduct from '@/components/ProductListProduct.vue'
 export default {
-  props: ['buttonText', 'title', 'defaultValues', 'buttonClass'],
+  props: ['buttonText', 'title', 'defaultValues', 'buttonClass', 'sampleImage'],
   data() {
     return {
       productInfo: {
@@ -71,7 +71,7 @@ export default {
         brandModel: this.defaultValues?.brandModel || '',
         price: this.defaultValues?.price || '',
         type: this.defaultValues?.type || '',
-        image: this.defaultValues?.image || '',
+        image: this.defaultValues?.image || this.sampleImage,
         dustWaterproof: this.defaultValues?.dustWaterproof || false,
         color: this.defaultValues?.color || [],
         connectors: this.defaultValues?.connectors || ''

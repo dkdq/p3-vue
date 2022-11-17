@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown-menu p-2">
+    <div class="dropdown-menu p-3 rounded-4 shadow-lg border-light">
         <div v-for="item in cart" :key="item.product._id">
             <div class="px-2 grid">
                 <div>

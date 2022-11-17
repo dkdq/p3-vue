@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductForm @form-submitted="createProduct" :buttonText="btnTitle" :title="pageTitle" :buttonClass="btnClass"/>
+    <ProductForm @form-submitted="createProduct" :buttonText="btnTitle" :title="pageTitle" :buttonClass="btnClass" :sampleImage="sampleImage"/>
   </div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
     return {
       btnTitle: 'Create',
       pageTitle: 'CREATE',
-      btnClass: 'btn-success'
+      btnClass: 'btn-success',
+      sampleImage: 'https://via.placeholder.com/800/ffffff?text=Sample Image'
     }
   },
   components: {

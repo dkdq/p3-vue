@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-
-    <!-- -----Banner----- -->
-    <div class="row">
+    <!-- -----Hero----- -->
+    <main class="row">
       <div class="col-md-4 p-3">
         <h2 class="pb-2">Product News</h2>
         <aside class="accordion shadow" id="accordionExample">
@@ -84,19 +83,19 @@
           </div>
         </aside>
       </div>
-    </div>
+    </main>
 
     <!-- -----Banner----- -->
     <header class="text-center rounded-4 shadow">
-      <h1>ALL PRODUCTS</h1>
+      <h2>ALL PRODUCTS</h2>
     </header>
 
-    <!-- -----Search Bar----- -->
+    <!-- -----Search & Filter Bar----- -->
     <aside class="dropdown d-flex justify-content-end">
       <div class="dropdown-toggle" data-bs-toggle="dropdown">
         Search Filter
       </div>
-      <ul class="dropdown-menu p-3 shadow-lg rounded-4 border border-light" @click="$event.stopPropagation()">
+      <ul class="dropdown-menu p-3 shadow-lg rounded-4 border-light" @click="$event.stopPropagation()">
         <div>
           <div class="search mt-1">
             <input type="text" v-model="search" placeholder="Title search.." class="form-control"/>
