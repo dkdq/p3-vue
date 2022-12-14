@@ -1,21 +1,27 @@
 # TGCProject3 - Vue2 Earphone App
 
 ## Intro
-This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api "https://github.com/dkdq/p2-product-reviews-rest-api"). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, Bootstrap5 and hosted on Netlify [link](https://chipper-sable-08dc10.netlify.app/ "p3-vue").
 
-User are able to search, read, edit, delete the earphone post with login authentication (email and password). Although our server is built with password encryption system to hash all the users' password, please don't use any online banking related password. 
+This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api 'https://github.com/dkdq/p2-product-reviews-rest-api'). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, Bootstrap5 and hosted on Netlify [link](https://chipper-sable-08dc10.netlify.app/ 'p3-vue').
+
+User are able to search, read, edit, delete the earphone post with login authentication (email and password). Although our server is built with password encryption system to hash all the users' password, please don't use any online banking related password.
 
 ## Context
+
 Bluetooth earphones are growing popular nowadays. Most people own at least one as their daily commuter companion to embrace themselves with their favorite music/drama/video/calls/etc or just to give themselves a peaceful noise reduced environment.
 
 ## Goal
+
 Thus our goal is to gather information of bluetooth earphone about any best budget friendly/functional purposed/branded or as long as it work its way. Any features include price, color, type, connector port, water&dustproof etc.
 
 ## Target Audience
-Any bluetooth user can contribute their user experiences or anyone who need a shopping research before purchasing. 
+
+Any bluetooth user can contribute their user experiences or anyone who need a shopping research before purchasing.
 
 ## Tech used
+
 **Frontend**
+
 - `HTML5` a markup language used for structuring and presenting content on the World Wide Web
 - `Cascading Style Sheets 3/CSS3` a style sheet language used to style and layout web pages
 - `Bootstrap5` a CSS framework directed at responsive, mobile-first front-end web development
@@ -27,13 +33,16 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - `Axios` a library used to send asynchronous HTTP requests to REST endpoints
 
 **Platform and Software**
+
 - `Git` a distributed version control system designed to handle coordinating work among programmers collaboratively developing source code during software development
 - `Github` an Internet hosting service for software development and version control using Git
 - `Gitpod` a platform for remote software development and embedded Git
 - `Visual Studio Code/VS Code` a source-code editor and embedded Git
 
 ## Vue2.js in-depth
+
 **Views/Routes**
+
 - Home
 - NotFound
 - Admin (Navigation Guard)
@@ -45,6 +54,7 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - ProductEdit
 
 **Components**
+
 - MiniCart
 - Modal (reusable) by Admin, Profile
 - NavigationBar
@@ -55,6 +65,7 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - User Form (reusable) by Login, Register, Profile
 
 **Parent props & Child emits**
+
 - Home(p) --> ProductListProduct(p) --> Product
 - Admin(p), Profile(p) <----> Modal(e)
 - Login(p), Register(p), Profile(p) <----> User Form(e)
@@ -62,6 +73,7 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - ProductAdd(p), ProductEdit(p) <----> Product Form(e)
 
 **Vuex**
+
 - MiniCart
 - NavigationBar
 - Notification Message
@@ -69,15 +81,17 @@ Any bluetooth user can contribute their user experiences or anyone who need a sh
 - API calls + JWT Authentication
 
 **Data Binding**
+
 - attribute: MiniCart, ProductListProduct
 - class: MiniCart, Modal, NotificationMessage, ProductForm
 - style: App, Product
 
 ## Key Features
+
 **Frontend**
 Features | Description
- --- | --- 
-Registration, Login, Logout |  Users can register, login, and logout for an account
+--- | ---
+Registration, Login, Logout | Users can register, login, and logout for an account
 Account management | Users can edit and delete account
 Search product(s) | Users can search the details of product
 Manual add-on quantity | Users can type in quantity in product page
@@ -85,13 +99,13 @@ Cart management | Users can view their order with product title, price, quantity
 
 **Backend**
 Features | Description
- --- | --- 
-Registration, Login, Logout |  Only admin and staffs can access the admin panel
+--- | ---
+Registration, Login, Logout | Only admin and staffs can access the admin panel
 Manage products | Create, read, update and delete product
 
 **Manual Testing**
 Test Case # | Description | Test Steps | Expected Result | Actual Result
- --- | --- | --- | --- | ---
+--- | --- | --- | --- | ---
 **Home**
 1 | Load website | Access URL | Navigation bar, main section(accordian, carousel, and product card list), and footer showed | Expected
 2 | Search product(s) | Type in any alphanumeric | Related product(s) showed | Expected
@@ -112,7 +126,7 @@ Test Case # | Description | Test Steps | Expected Result | Actual Result
 7 | Total price | Add item(s) | Generated total price of whole cart item | Expected
 8 | Checkout | Click checkout button | Guest is redirect to Login page | Expected
 9 | Checkout | Click checkout button | Logged user no redirect to Login page | Expected
-**User**
+**User** | email: jj@jj.com password: 123123
 1 | Valid login | Click login link(navigation bar) to redirect to login page then enter email and password | User redirect to home page and welcome notification showed | Expected
 2 | Invalid login | Follow step 1 and enter non-exist or wrong formatted email or password | Validation notification showed | Expected
 3 | Cancel login | Click cancel button | User redirect to Home page | Expected
@@ -124,7 +138,7 @@ Test Case # | Description | Test Steps | Expected Result | Actual Result
 9 | Invalid edit user info | Follow step 8 | Validation notification showed | Expected
 10 | Pre-delete user | Follow step 7 and click delete button | Modal shown to recomfirm with user | Expected
 11 | Post-delete user | Follow step 9 | User redirect to Home page and notification showed | Expected
-**Admin**
+**Admin** | email: admin@admin.com password: 123123
 1 | Valid login | Click login link(navigation bar) to redirect to Login page then enter email and password | User redirect to Admin page and welcome notification showed | Expected
 2 | Navigate to Product page | Click show button | Redirect to specific Product page | Expected
 3 | Navigate to "add product" page | Click "add product" | Admin redirect to ProductFormAdd page | Expected
@@ -140,43 +154,50 @@ Test Case # | Description | Test Steps | Expected Result | Actual Result
 13 | Cancel edit admin info | Click cancel button | User redirect to Admin page | Expected
 
 ## UIUX
+
 **1. Strategy**
+
 - To establish an e-commerce store selling a wide variety of earphone categories, price, and brands ranging from local to international.
 - Reach out to mobile, tablet, and laptop users for access anytime.
 - Good ranking in SEO search
 
 **2. Scope**
+
 - Functional requirements: Feeback to every user action with notifications
 - Content requirements: Imagery and text for product
 
 **3. Struture**
+
 - Navigation bar is linking to user related
 - Product card is linking to product related
 - Product card filtering
 - Cart is linking to price and quantity related
 
 **4. Skeleton**
+
 - Interface design: Background animation and password toggle
 - Navigation design: Global navigation bar
 - Information design: Accordian for news(text), carousel for user experiences(imagery and text), product cards listing for content(imagery and text)
 
 **5. Surface**
+
 - Typography: technological/futuristic
 - Tones:
-    - ![#222](https://placehold.co/15x15/222/222.png) *#222*
-    - ![olive](https://placehold.co/15x15/olive/olive.png) *Olive*
-    - ![red](https://placehold.co/15x15/red/red.png) *Red*
-    - ![rgb(67, 124, 205)](https://placehold.co/15x15/437CCD/437CCD.png) *rgb(67, 124, 205)*
-    - ![rgb(69, 214, 202)](https://placehold.co/15x15/45D6CA/45D6CA.png) *rgb(69, 214, 202)*
-    - ![#9a9a9a](https://placehold.co/15x15/9a9a9a/9a9a9a.png) *#9a9a9a*
-    - ![#bdbdbd](https://placehold.co/15x15/bdbdbd/bdbdbd.png) *#bdbdbd*
-    - ![#dbdbdb](https://placehold.co/15x15/dbdbdb/dbdbdb.png) *#dbdbdb*
-    - ![whitesmoke](https://placehold.co/15x15/whitesmoke/whitesmoke.png) *Whitesmoke*
+  - ![#222](https://placehold.co/15x15/222/222.png) _#222_
+  - ![olive](https://placehold.co/15x15/olive/olive.png) _Olive_
+  - ![red](https://placehold.co/15x15/red/red.png) _Red_
+  - ![rgb(67, 124, 205)](https://placehold.co/15x15/437CCD/437CCD.png) _rgb(67, 124, 205)_
+  - ![rgb(69, 214, 202)](https://placehold.co/15x15/45D6CA/45D6CA.png) _rgb(69, 214, 202)_
+  - ![#9a9a9a](https://placehold.co/15x15/9a9a9a/9a9a9a.png) _#9a9a9a_
+  - ![#bdbdbd](https://placehold.co/15x15/bdbdbd/bdbdbd.png) _#bdbdbd_
+  - ![#dbdbdb](https://placehold.co/15x15/dbdbdb/dbdbdb.png) _#dbdbdb_
+  - ![whitesmoke](https://placehold.co/15x15/whitesmoke/whitesmoke.png) _Whitesmoke_
 - Style:
-    - Box 2d manipulation
-    - Animation(logo, card, modal, images, icons, buttons)
+  - Box 2d manipulation
+  - Animation(logo, card, modal, images, icons, buttons)
 
 ## Credits
+
 - Trent Global College & Tutor Paul [Link](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/)
 - Stack Overflow for js & vuejs issues [Link](https://stackoverflow.com/questions/45264923/how-to-return-boolean-and-not-string-when-using-select) [Link](https://stackoverflow.com/questions/46967096/using-multiple-filters-in-v-for-directive-in-vue-2-0) [Link](https://stackoverflow.com/questions/57680426/vuejs-ternary-operator-conditional-not-working-in-v-bind-style)
 - Error Handling with Vuex [Terabyte Tiger](https://terabytetiger.com/lessons/error-handling-in-vue-with-vuex)
