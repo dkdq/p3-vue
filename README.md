@@ -2,7 +2,7 @@
 
 ## Intro
 
-This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api 'https://github.com/dkdq/p2-product-reviews-rest-api'). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, Bootstrap5 and hosted on Netlify [link](https://chipper-sable-08dc10.netlify.app/ 'p3-vue').
+This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api 'https://github.com/dkdq/p2-product-reviews-rest-api'). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, Bootstrap5 and hosted on Netlify [link](https://mevn-ecommerce.netlify.app/).
 
 User are able to search, read, edit, delete the earphone post with login authentication (email and password). Although our server is built with password encryption system to hash all the users' password, please don't use any online banking related password.
 
