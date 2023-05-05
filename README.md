@@ -2,7 +2,7 @@
 
 ## Intro
 
-This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC project 2](https://github.com/dkdq/p2-product-reviews-rest-api 'https://github.com/dkdq/p2-product-reviews-rest-api'). This app is designed to be multipurpose such as e-commerce and admin management system. It was created using HTML5, CSS3, JavaScript, Vue2.js, Bootstrap5 and hosted on Netlify [live link](https://mevn-ecommerce.netlify.app/).
+This is a mobile responsive web app built with bootstrap 5 UI framework and consume the bluetooth earphone REST API from [TGC Project 2](https://github.com/dkdq/p2-product-reviews-rest-api 'https://github.com/dkdq/p2-product-reviews-rest-api'). This app is designed to be multipurpose such as e-commerce and admin management system. [TGC Project 3](https://mevn-ecommerce.netlify.app/ 'https://mevn-ecommerce.netlify.app/') was created using HTML5, CSS3, JavaScript, Vue2.js, Bootstrap5 and hosted on Netlify.
 
 User are able to search, read, edit, delete the earphone post with login authentication (email and password). Although our server is built with password encryption system to hash all the users' password, please don't use any online banking related password.
 
@@ -202,10 +202,10 @@ Test Case # | Description | Test Steps | Expected Result | Actual Result
 
 ## Credits
 
-- Trent Global College & Tutor Paul [Link](https://www.trentglobal.edu.sg/diplomainsoftwaredevelopment/)
+- [Trent Global College](https://www.trentglobal.edu.sg/) & Tutor [Paul](https://github.com/kunxin-chor)
 - Stack Overflow for js & vuejs issues [Link](https://stackoverflow.com/questions/45264923/how-to-return-boolean-and-not-string-when-using-select) [Link](https://stackoverflow.com/questions/46967096/using-multiple-filters-in-v-for-directive-in-vue-2-0) [Link](https://stackoverflow.com/questions/57680426/vuejs-ternary-operator-conditional-not-working-in-v-bind-style)
-- Error Handling with Vuex [Terabyte Tiger](https://terabytetiger.com/lessons/error-handling-in-vue-with-vuex)
-- Vuejs Forum [Link](https://forum.vuejs.org/t/vuex-brief-display-of-previous-data-before-loading-new-data/22090)
-- Vue & JWT Authentication [Bezkoder](https://www.bezkoder.com/jwt-vue-vuex-authentication/)
-- Medium [Modal](https://medium.com/js-dojo/how-to-build-a-reusable-vuejs-modal-component-fc8d7f3b4735)
-- CSS [Link](https://www.cssmine.com/blog/2020-02-12-css-object-fit-and-object-position-properties-crop-images-embedded-in-html)
+- Error Handling with Vuex - [Terabyte Tiger](https://terabytetiger.com/lessons/error-handling-in-vue-with-vuex)
+- [Vuex](https://forum.vuejs.org/t/vuex-brief-display-of-previous-data-before-loading-new-data/22090)
+- Vue & JWT Authentication - [Bezkoder](https://www.bezkoder.com/jwt-vue-vuex-authentication/)
+- [Modal](https://medium.com/js-dojo/how-to-build-a-reusable-vuejs-modal-component-fc8d7f3b4735)
+- [CSS](https://www.cssmine.com/blog/2020-02-12-css-object-fit-and-object-position-properties-crop-images-embedded-in-html)
